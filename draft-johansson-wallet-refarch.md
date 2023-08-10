@@ -1,7 +1,7 @@
 ---
 title: A reference architecture for direct presentation credential flows
 abbrev: wallet-refarch
-docname: draft-johansson-wallet-refarch
+docname: draft-johansson-wallet-refarch-latest
 category: info
 
 ipr: trust200902
