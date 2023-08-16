@@ -34,12 +34,12 @@ jobs:
         restore-keys: i-d-
 
     - name: "Build Drafts"
-      uses: leifj/i-d-template
+      uses: docker.io/leifj/i-d-template
       with:
         token: ${{ github.token }}
 
     - name: "Upload to Datatracker"
-      uses: leifj/i-d-template
+      uses: docker.io/leifj/i-d-template
       with:
         make: upload
 
