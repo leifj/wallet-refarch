@@ -43,8 +43,48 @@ informative:
         ins: C. Mortimore
         name: Chuck Mortimore
     date: 2014
+  PathToSSI:
+    title: The Path to Self-Sovereign Identiy
+    author:
+      -
+        ins: C. Allen
+        name: Chrisopher Allen
+    target: http://www.lifewithalacrity.com/2016/04/the-path-to-self-soverereign-identity.html
 normative:
   RFC2119:
+  SDJWT: I-D.ietf-oauth-selective-disclosure-jwt
+  OIDC4VP:
+    title: OpenID for Verifiable Presentations
+    author:
+      -
+        ins: O. Terbu
+        name: Oliver Terbu
+      -
+        ins: T. Lodderstedt
+        name: Torsten Lodderstedt
+      -
+        ins: K. Yatsuda
+        name: Kristina Yatsuda
+      -
+        ins: A. Lemmon
+        name: Adam Lemmon
+      -
+        ins: T. Looker
+        name: Tobias Looker
+    target: https://openid.net/specs/openid-connect-4-verifiable-presentations-1_0-07.html#name-authors-addresses
+  OIDC4VCI:
+    title: OpenID for Verifiable Credential Issuance
+    author:
+      -
+        ins: T. Lodderstedt
+        name: Torsten Lodderstedt
+      -
+        ins: K. Yatsuda
+        name: Kristina Yatsuda
+      -
+        ins: T. Looker
+        name: Tobias Looker
+    target: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
 
 --- abstract
 
@@ -60,23 +100,21 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 # A Note on History
 
-The origins of the notion of digital identity goes back to the mid 1990s. Historically, Internet protocols were never designed with the concept of digital identity in mind. Internet protocols were designed to deal with authentication and (sometimes) authorization, i.e. the question of what entity is accessing the protocol and what they are allowed to do.
-
-Some protocols (eg kerberos or X.509) had a notion of subject _identifiers_ (eg principal names for kerberos) which typically uniquely identify a single subject in the context of the protocol flows. Identifier systems in Internet protocols were also never designed to be unified - each security protocol typically designed a separate structure of identifiers.
+The origins of the notion of digital identity goes back to the mid 1990s. Historically, Internet protocols were designed to deal with authentication and (sometimes) authorization, i.e. the question of what entity is accessing the protocol and what they are allowed to do. Digital identity can be thought of as a generalization of the concept of a user identifier in a protocol. Today we typically use the term data subject (abbreviated as 'subject' when there is no risk of confusion) to denote the actor whoese data is beeing acted upon by the protocol. Most internet protocols represent the data subject as a "user" identified by a single unique identifier. Identifier in use by Internet protocols were typically never designed to be unified - each security protocol typically designed a separate structure of identifiers.
 
 Identifier schemes such as kerberos principal names or X.509 distinguished names are often assumed to be unique across multiple protocol endpoints. This introduces linkability across multiple protocol endpoints. Historically this was never seen as an issue.
 
-When web applications were build that required some form of user authentication the notion of externalized or _federated_ user authentication was established as a way to offload the work involved in user management from each web application to some form of centralized service. Early on this was sometimes called "single sign on" - a term used to describe the (desirable) property of authentication flows that users can login in (sign on) once and have the "logged in" state recognized across multiple applications.
+When web applications were build that required some form of user authentication the notion of externalized or _federated_ user authentication was established as a way to offload the work involved in user management from each web application to some form of centralized service. This is sometimes called "single sign on" - a term used to describe the (sometimes, but not alwasy desirable) property of authentication flows that a user can login in (sign on) once and have the "logged in" state recognized across multiple applications. State replication across multiple web application carries with it a separate set of concerns which is not discussed here.
 
-In the late 1990s multiple protocols for "web single sign-on" were developed. Soon the need to connect such "SSO-systems" across multiple administrative and technical realms was recognized. This led to the development of standard federation protocols such as the Security Assertion Markup Language {{SAML}} and Open ID Connect {{OPENIDC}}.
+In the late 1990s multiple protocols for "web single sign-on" were developed. Soon the need to connect multiple "SSO-systems" across different administrative and technical realms was recognized. Bridging administrative realms is often called "federating" those realms and the term "federated identity" owes its origin to this practice. The development of standard protocols for federating identity such as the Security Assertion Markup Language {{SAML}} and Open ID Connect {{OPENIDC}} were initially created in the early to mid 2000s. These protocols are widely deployed today.
 
-The notion of digital identity evolved as a generalization of the "single sign-on" concept because modern federation protocols (OIDC, SAML etc) are able to transport not only shared state about the sign-in status of a user (eg in the form of a login-cookie) but can also be used to share information about the subject (user) accessing the service. In some cases these protocols made it possible to fully externalize identity management from the application into an "identity provider"; a centralized service responsible for maintaining information about users and _releasing_ such information in the form of _attributes_ to trusted services (aka relying parties).
+The notion of digital identity evolved as a generalization of the "single sign-on" concept because modern federation protocols (OIDC, SAML etc) are able to transport not only shared state about the sign-in status of a user (eg in the form of a login-cookie) but can also be used to share information about the subject (user) accessing the service. In some cases identity federation protocols made it possible to fully externalize identity management from the application into an "identity provider"; a centralized service responsible for maintaining information about users and _releasing_ such information in the form of _attributes_ to trusted services (aka relying parties).
 
-Federated identity is therefore defined as an architecture for digital identity where information about data subjects is maintained by identity providers and shared with relying parties (sometimes called service providers) as needed to allow subjects to be authenticated and associated with appropriate authorization at the relying party.
+Federated identity can be thought of as an architecture for digital identity where information about data subjects is maintained by identity providers and shared with relying parties (sometimes called service providers) as needed to allow subjects to be authenticated and associated with appropriate authorization at the relying party.
 
 Here is an illustration of how most federation protocols work. In this example the Subject is requesting some resource at the RP that requires authentication. The RP issues an authentication requests which is sent to the IdP. The IdP prompts the user to present login credentials (username/password or some other authentication token) and after successfully verifying that the Subject matches the login credentials in the IdPs database the IdP returns an authentication response to the RP.
 
-In this example we are not considering the precise way in which protocol messages are transported between IdP and RP, nor do we consider how the Subject is represented in the interaction between the IdP and RP (eg if a user-agent is involved).
+A brief illustration of the typical federation flow is useful. For the purpose of this illustration we are not considering the precise way in which protocol messages are transported between IdP and RP, nor do we consider how the Subject is represented in the interaction between the IdP and RP (eg if a user-agent is involved).
 
 ~~~~ plantuml
 Subject -> RP: Initiate authentication flow
@@ -94,6 +132,12 @@ Note that
 * The RP trusts the IdP to accurately represent information about the Subject
 
 The limitation of this type of architecture and the need to evolve the architecture into direct presentation flow is primarily the second point: the IdP has information about every RP the Subject has ever used. Together with the use of linkable attributes at the RP this becomes a major privacy leak and a signifficant drawback of this type of architecture.
+
+The notion of "Self Sovreign Identity" (SSI) was first introduced in the blogpost [PathToSSI] by Christopher Allen. The concept initially relied heavily on the assumed dependency on blockchain technology. Recently there has been work to abstract the concepts of SSI away from a dependency on specificy technical solutions and desribe the key concepts of SSI independently of the use of blockchain.
+
+The purpose of this document is to create a reference architecture for some of the concepts involved in SSI in such a way that different implementations can be contrasted and compared. This document attempts to define a set of core normative requirement and also introduce the notion of direct presentation flow to denote the practice of using a digital wallet to allow the data subject control over the digital credential sharing flow.
+
+Direct presentation flow should be seen as a generalization of the Self-Sovereign Identity concept in the sense that unlike SSI, direct presentation make no assumptions or value judgements about the relative merits of third party data ownership and control. The basic architecture of direct presentation does empower the user with more control than the federated model does but in the SSI architecture the user always has full control over every aspect of data sharing with the RP. This is not necessarily true (eg for legal reasons) in all cases which is why there is a need to desribe the technical underpinnings of direct presentation flows in such a way that the full SSI model can be a special case of a direct presentation architecture.
 
 # Actors and Entities in Direct Presentation Flow
 
@@ -114,12 +158,10 @@ digital credential
 artifact pres [
 digital credential presentation
 ]
-issuer --> wallet: "issues"
-issuer --> cred: "creates"
-wallet --> verifier: "presents"
+issuer --> wallet: "issue to"
+wallet --> cred: "contains"
+wallet --> verifier: "present to"
 subject --0 wallet: controls
-cred --* wallet: contained in
-cred --> pres: "creates"
 verifier --> pres: verifies
 ~~~~
 
@@ -159,7 +201,14 @@ A conformant implementation SHOULD provide a way for an Issuer to revoke an issu
 
 # A Minimal Profile
 
-TODO - write about using SD-JWT, accumulators, digital signature key-mgmt, OpenID Connect etc
+A minimal profile of the direct presentation credential architecture can be produced by:
+
+  1. Digital credentials are represented as SD-JWT objects {{SDJWT}}
+  2. An issuer implements the OP side of {{OIDC4VCI}}
+  3. A verifier implements RP side of {{OIDC4VP}}
+  4. A wallet implements the RP side of {{OIDC4VCI}} and the OP side of {{OIDC4VP}}
+
+This profile fails to account for revocation of digital credentials. TODO: desribe how the profile fulfils issuer and holder bindings.
 
 # Security Considerations
 
