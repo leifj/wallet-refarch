@@ -208,7 +208,9 @@ The verifier MUST NOT be able to infer information about data not present in the
 
 A conformant implementation SHOULD provide a way for an issuer to revoke an issued digital credential in such a way that subsequent attempts by a verifier to verify the authenticity of proofs based on that credential fail.
 
-# A Minimal Profile
+# Profiles
+
+## A Minimal Profile
 
 A minimal profile of the direct presentation credential architecture can be produced by:
 
@@ -227,7 +229,7 @@ This minimal profile fulfills several of the requirements in the previous sectio
 
   This profile does not provide any solution for revocation and it leaves the question of how OpenID connect entities (issuers, verifiers and wallets) trust each other. There are also real scalability issues involved in how the digital signature keys are managed but as a minimal profile it illustrates the components necessary to make a direct presentation architecture work.
 
-# The EU Digital Identity Wallet
+## The EU Digital Identity Wallet
 
 The EU digital identity wallet (EUID wallet) as defined by the architecture reference framework {{ARF}} is an evolving profile for a direct presentation architecture that includes several aspects of the minimal profile above. Note that the EUID wallet specification is in flux and subect to signifficant change.
 
