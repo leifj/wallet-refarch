@@ -207,13 +207,14 @@ A minimal profile of the direct presentation credential architecture can be prod
   2. An issuer implements the OP side of {{OIDC4VCI}}
   3. A verifier implements RP side of {{OIDC4VP}}
   4. A wallet implements the RP side of {{OIDC4VCI}} and the OP side of {{OIDC4VP}}
-  5. A wallet
 
 This minimal profile fulfills several of the requirements in the previous section:
 
   * Selective disclosure is provided by the use of SD-JWT objects to represent credential and presentation objects.
   * Issuer binding is provided by a combination of digital signatures on SD-JWTs and OpenID connect authentication between the wallet and issuer.
   * Non-linkability is provided by not reusing SD-JWTs from the issuer for multiple presentations. The wallet MAY obtain multiple copies of the same SD-JWT credentials from the wallet at the same time. These can then be used to generate separate presentation objects, never reusing the same SD-JWT credential for separate verifiers.
+
+  This profile does not provide any solution for revocation and it leaves the question of how OpenID connect entities (issuers, verifiers and wallets) trust each other. There are also real scalability issues involved in how the digital signature keys are managed but as a minimal profile it illustrates the components necessary to make a direct presentation architecture work.
 
 # Security Considerations
 
