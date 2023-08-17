@@ -170,12 +170,22 @@ The basic direct presentation flows looks like this:
 
 ~~~ plantuml
 group issuance
-   Wallet --> Issuer: request credential
+   Issuer <-- Wallet: request credential
+   activate Issuer
+   Issuer --> Issuer: <<generate credential>>
    Issuer --> Wallet: return credential
+   deactivate Issuer
 
 group verification
-   Verifier --> Wallet: request credential presentation
-   Wallet --> Verifier: return credential presentation
+   Verifier --> Wallet: request presentation
+   activate Wallet
+   Wallet --> Subject: <<prompt to select credential(s)>>
+   activate Subject
+   Wallet <-- Subject: <<pick credential(s)>>
+   deactivate Subject
+   Wallet --> Wallet: <<generate presentation from credential(s)>>
+   Wallet --> Verifier: return presentation
+   deactivate Wallet
 ~~~
 
 # Normative Requirements on Direct Presentation Flow
