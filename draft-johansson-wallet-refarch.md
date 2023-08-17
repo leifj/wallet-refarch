@@ -161,6 +161,7 @@ digital credential presentation
 issuer --> wallet: "issue to"
 wallet --> cred: "contains"
 wallet --> verifier: "present to"
+pres --> cred: "derived from"
 subject --0 wallet: controls
 verifier --> pres: verifies
 ~~~~
