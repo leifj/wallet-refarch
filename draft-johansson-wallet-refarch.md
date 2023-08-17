@@ -50,6 +50,13 @@ informative:
         ins: C. Allen
         name: Chrisopher Allen
     target: http://www.lifewithalacrity.com/2016/04/the-path-to-self-soverereign-identity.html
+  ARF:
+    title: The European Digital identity Wallet architecture and Reference framework
+    author:
+      -
+        ins: COM
+        name: The European Commission
+    target: https://digital-strategy.ec.europa.eu/en/library/european-digital-identity-wallet-architecture-and-reference-framework
 normative:
   RFC2119:
   SDJWT: I-D.ietf-oauth-selective-disclosure-jwt
@@ -139,32 +146,23 @@ The purpose of this document is to create a reference architecture for some of t
 
 Direct presentation flow should be seen as a generalization of the Self-Sovereign Identity concept in the sense that unlike SSI, direct presentation make no assumptions or value judgements about the relative merits of third party data ownership and control. The basic architecture of direct presentation does empower the user with more control than the federated model does but in the SSI architecture the user always has full control over every aspect of data sharing with the RP. This is not necessarily true (eg for legal reasons) in all cases which is why there is a need to desribe the technical underpinnings of direct presentation flows in such a way that the full SSI model can be a special case of a direct presentation architecture.
 
-# Actors and Entities in Direct Presentation Flow
+# Actors and Entities
 
-In a direct presentation identity architecture, the subject (aka user) controls a digital identity wallet that acts as a container and a control mechanism for digital identity credentials. The precise nature of the control the user has over the digital identity wallet varies but minimally the user must be able to initiate the receipt of digital credentials from an issuer and the transmission of  digital credentials to the verifier.
+## Subject and Wallet
 
-Typically, digital credentials are not sent "as is" to verifiers. Instead, digital credential presentation objects are derived from existing digital credentials. Presentation credentials are created in such a way that they are crypographically bound both to the original digital credential obtained from the issuer and often also to the digital identity wallet used to store the credential.
+The subject (aka data subject) is typically a natural person but can be thought of as the entity associated with a set of data. The subject controls a digital identity wallet (abbreviated as 'wallet' in this document). The wallet is used by the subject to communicate with issuers and verifiers and acts as a container for digital credentials and presentation proofs. The nature of the control the user has over the wallet varies but minimally the user must be able to initiate the receipt of credentials from an issuer and the transmission of digital credentials to a verifier.
 
-The verifier, upon receipt of a digital credential presentation object, is able to verify both that the digital credential presentation object was sent by a known and trusted wallet and also that the digital credential presentation object was derived from a digital credential from a known and trusted issuer.
+## Credentials and Presentation Proofs
 
-~~~~ plantuml
-:subject:
-[wallet]
-[issuer]
-[verifier]
-artifact cred [
-digital credential
-]
-artifact pres [
-digital credential presentation
-]
-issuer --> wallet: "issue to"
-wallet --> cred: "contains"
-wallet --> verifier: "present to"
-pres --> cred: "derived from"
-subject --0 wallet: controls
-verifier --> pres: verifies
-~~~~
+A digital identity credential (abbreviated as 'credential' in this document) is an object representing a set of data associated with a subject. The credential MAY contain data that uniquely identify a single subject. A digital identity credential is typically cryptographically bound both to the issuer and to the wallet where it is stored. A presentation proof (abbreviated as 'presentation' in this document) is a proof that a particular issuer has provided a particular set of credentials to the wallet. A presentation can be verified by at least one verifier. A presentation proof can be based on data present in a single credential or in multiple or even on the result of computations based on a set of credentials. A common example is a presentation proof that a subject is legally permitted to take driving lessons. This is a binary attribute the result of a computation involving knowledge of both the biological age of the subject aswell as legal restrictions that apply to the juristiction where the verifier is operating.
+
+## Issuer and Verifier
+
+An issuer is a set of protcol endpoints that allow a wallet to receive a credential. Credentials issued by the issuer are cryptographically bound to that issuer and to the receiving wallet.
+
+A verfier is a set of protocol endpoints that allow a wallet to send a presentation to a verifier. A verifier is typically a component used to provide an application with data about the subject - for instance in the context of an authentication process.
+
+# Direct Presentation Flow
 
 The basic direct presentation flows looks like this:
 
@@ -188,27 +186,27 @@ group verification
    deactivate Wallet
 ~~~
 
-# Normative Requirements on Direct Presentation Flow
+# Normative Requirements
 
 ## Selective Disclosure
 
-A conformant implementation SHOULD identify a format for representing digital credentials that support selective disclosure of information to Verifiers during presentation.
+A conformant implementation SHOULD identify a format for representing digital credentials that make it possible for the subject to select a subset of the data present in the credential for inclusion in a presentation proof.
 
 ## Issuer Binding
 
-A conformant implementation MUST provide a mechanism for verifying that a digital credential is authenticic and was created by a particular Issuer.
+A verifier MUST be able to verifiy the identity of the issuer of the credential from the presentation proof.
 
 ## Holder Binding
 
-A conformant implementation MUST provide a way for the Verifier to verify that the received digital credential presentation was issued to the same Wallet presenting the original credential to the Verifier.
+The verifier MUST be able to verify that the wallet sending the presentation proof is the same wallet that received the credential from which the presentation proof was derived.
 
-## Non-linkability
+## Non-linkability and data minimization
 
-A conformant implementation MUST provide a way for a Verifier to verify the current authenticity of a digital credential without making it possible for an attacker to learn the identity of the association between the Subject and the Verifier.
+The verifier MUST NOT be able to infer information about data not present in the presentation. This includes any association between the wallet or subject and other issuers and verifiers not associated with the presentation.
 
 ## Revocation
 
-A conformant implementation SHOULD provide a way for an Issuer to revoke an issued digital credential in such a way that subsequent attempts by a Verifier to verify the authenticity of that credential fail.
+A conformant implementation SHOULD provide a way for an issuer to revoke an issued digital credential in such a way that subsequent attempts by a verifier to verify the authenticity of proofs based on that credential fail.
 
 # A Minimal Profile
 
@@ -219,6 +217,8 @@ A minimal profile of the direct presentation credential architecture can be prod
   3. A verifier implements RP side of {{OIDC4VP}}
   4. A wallet implements the RP side of {{OIDC4VCI}} and the OP side of {{OIDC4VP}}
 
+A wallet conforming to this profile is essentially an openid connect /store-and-forward proxy/ with a user interface.
+
 This minimal profile fulfills several of the requirements in the previous section:
 
   * Selective disclosure is provided by the use of SD-JWT objects to represent credential and presentation objects.
@@ -226,6 +226,10 @@ This minimal profile fulfills several of the requirements in the previous sectio
   * Non-linkability is provided by not reusing SD-JWTs from the issuer for multiple presentations. The wallet MAY obtain multiple copies of the same SD-JWT credentials from the wallet at the same time. These can then be used to generate separate presentation objects, never reusing the same SD-JWT credential for separate verifiers.
 
   This profile does not provide any solution for revocation and it leaves the question of how OpenID connect entities (issuers, verifiers and wallets) trust each other. There are also real scalability issues involved in how the digital signature keys are managed but as a minimal profile it illustrates the components necessary to make a direct presentation architecture work.
+
+# The EU Digital Identity Wallet
+
+The EU digital identity wallet (EUID wallet) as defined by the architecture reference framework {{ARF}} is an evolving profile for a direct presentation architecture that includes several aspects of the minimal profile above. Note that the EUID wallet specification is in flux and subect to signifficant change.
 
 # Security Considerations
 
