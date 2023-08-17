@@ -208,7 +208,11 @@ A minimal profile of the direct presentation credential architecture can be prod
   3. A verifier implements RP side of {{OIDC4VP}}
   4. A wallet implements the RP side of {{OIDC4VCI}} and the OP side of {{OIDC4VP}}
 
-This profile fails to account for revocation of digital credentials. TODO: desribe how the profile fulfils issuer and holder bindings.
+This minimal profile fulfills several of the requirements in the previous section:
+
+  * Selective disclosure is provided by the use of SD-JWT objects to represent credential and presentation objects.
+  * Issuer binding is provided by a combination of digital signatures on SD-JWTs and OpenID connect authentication between the wallet and issuer.
+
 
 # Security Considerations
 
