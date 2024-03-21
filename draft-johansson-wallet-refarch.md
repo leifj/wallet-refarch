@@ -134,7 +134,7 @@ Subject <-- RP: Success!
 
 Note that
 
-* The Subject only presents login credentials to the RP
+* The Subject only presents login credentials to the IdP
 * The IdP learns which RP the subject is requesting access to
 * The RP trusts the IdP to accurately represent information about the Subject
 
