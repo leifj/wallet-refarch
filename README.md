@@ -2,10 +2,10 @@
 
 This is the working area for the individual Internet-Draft, "A reference architecture for direct presentation credential flows".
 
-* [Editor's Copy](https://leifj.github.io/wallet-refarch/#go.draft-johansson-wallet-refarch.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-johansson-wallet-refarch)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-johansson-wallet-refarch)
-* [Compare Editor's Copy to Individual Draft](https://leifj.github.io/wallet-refarch/#go.draft-johansson-wallet-refarch.diff)
+* [Editor's Copy](https://leifj.github.io/wallet-refarch/#go.draft-johansson-direct-presentation-arch.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-johansson-direct-presentation-arch)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-johansson-direct-presentation-arch)
+* [Compare Editor's Copy to Individual Draft](https://leifj.github.io/wallet-refarch/#go.draft-johansson-direct-presentation-arch.diff)
 
 
 ## Contributing
