@@ -4,8 +4,8 @@
 
 Network Working Group                                       L. Johansson
 Internet-Draft                                                     Sunet
-Intended status: Informational                            17 August 2023
-Expires: 18 February 2024
+Intended status: Informational                              3 March 2025
+Expires: 4 September 2025
 
 
    A reference architecture for direct presentation credential flows
@@ -13,9 +13,17 @@ Expires: 18 February 2024
 
 Abstract
 
-   This document provides a general reference architecture for direct
-   presentation credential flows, often called "digital identity
-   wallets".
+   This document defines a reference architecture for direct
+   presentation flows of digital credentials.  The architecture
+   introduces the concept of a presentation mediator as the active
+   component responsible for managing, presenting, and selectively
+   disclosing credentials while preserving a set of security and privacy
+   promises that will also be defined.
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119, BCP 14
+   [RFC2119].
 
 Discussion Venues
 
@@ -39,11 +47,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 February 2024.
+   This Internet-Draft will expire on 4 September 2025.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -58,31 +66,60 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-   2.  A Note on History
-   3.  Actors and Entities
-     3.1.  Subject and Wallet
-     3.2.  Credentials and Presentation Proofs
-     3.3.  Issuer and Verifier
-   4.  Direct Presentation Flow
-   5.  Normative Requirements
-     5.1.  Subject control
-     5.2.  Selective Disclosure
-     5.3.  Issuer Binding
-     5.4.  Holder Binding
-     5.5.  Non-linkability and data minimization
-     5.6.  Revocation
-   6.  Profiles
-     6.1.  A Minimal Profile
-     6.2.  The EU Digital Identity Wallet
-   7.  Security Considerations
-   8.  IANA Considerations
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
+   2.  Terminology
+     2.1.  Naming the elephant in the room
+     2.2.  Terminology used in this specification
+   3.  A Note on History
+   4.  Actors and Entities
+     4.1.  Subject and Wallet
+     4.2.  Credentials and Presentation Proofs
+     4.3.  Issuer and Verifier
+   5.  Direct Presentation Flow
+   6.  Normative Requirements
+     6.1.  Subject control
+     6.2.  Selective Disclosure
+     6.3.  Issuer Binding
+     6.4.  Holder Binding
+     6.5.  Non-linkability and data minimization
+     6.6.  Revocation
+   7.  Profiles
+     7.1.  A Minimal Profile
+     7.2.  The EU Digital Identity Wallet
+   8.  Security Considerations
+   9.  IANA Considerations
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
    Acknowledgments
    Author's Address
 
 1.  Introduction
+
+   Digital credentials, which assert claims about individuals,
+   organizations, or devices, have become essential tools in modern
+   identity systems.  Whether verifying an individual's qualifications,
+   attesting to an enterprise's compliance, or authorizing an IoT
+   device, these credentials rely on secure, efficient, and privacy-
+   preserving mechanisms for their use.
+
+   Traditional federated identity systems often rely on intermediaries
+   or delegation, which can compromise user privacy or introduce
+   inefficiencies.  This document presents an architecture for direct
+   presentation flows, where credentials are presented directly to
+   verifiers without unnecessary intermediaries, empowering the data
+   subject or their authorized representative to maintain control over
+   the credential's use.
+
+   At the heart of this architecture is the presentation mediator, an
+   active software component responsible for facilitating secure and
+   privacy-aware interactions.  This mediator works in tandem with
+   passive credential stores, verifiers, and issuers, creating a
+   scalable and interoperable system that can adapt to diverse
+   regulatory and operational environments.
+
+2.  Terminology
+
+2.1.  Naming the elephant in the room
 
    The term "digital wallet" or "digital identity wallet" is often used
    to denote a container for digital objects representing information
@@ -91,21 +128,44 @@ Table of Contents
    stemming from the origin of some types of wallet in the "crypto" or
    digital asset community, aswell as meant to make the user think of a
    physical wallet where digital credentials correspond to things like
-   credit cards, currency, loyalty cards, identity cards etc.  The
-   wallet concept is a powerful conceptual tool and this document does
-   not claim to define or constrain all aspects of the use of the term
-   "digital wallet".  Instead this document is attempting to define a
-   reference architecture for a type of digital identity architectures
-   where a form of digital wallet is used to facilitate the flow of
-   digital _identity_ credentials.  Specifically, this document does not
-   concern itself with digital currency schemes or "crypto" wallets.
+   credit cards, currency, loyalty cards, identity cards etc.
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in RFC 2119, BCP 14
-   [RFC2119].
+   Arguably the use of the term wallet is often confusing since it may
+   lead to assumptions about the fungibility of identity or that
+   credentials are exchanged as part of a monetary transaction.  In this
+   specification we will use the term "persentation mediator" when
+   traditionally the term "identity wallet" or "wallet" has been used.
 
-2.  A Note on History
+2.2.  Terminology used in this specification
+
+   To anchor this architecture, we define key terms:
+
+   *  A presentation mediator is an active software component that
+      manages the presentation of credentials, ensuring that only the
+      necessary claims are disclosed to the verifier.
+
+   *  A credential store is a passive repository for securely storing
+      credentials.  It supports the presentation mediator by providing
+      access to stored credentials without performing active operations.
+
+   *  The data subject is the entity the credential pertains to, such as
+      an individual or organization.
+
+   *  A presenter is the actor that delivers a credential to a verifier.
+      While often the data subject, the presenter could also be an
+      authorized agent or software acting on their behalf.
+
+   *  A credential is a signed, structured document containing claims
+      about a subject, issued by a trusted entity.
+
+   *  An attestation is a statement about a credential, often used to
+      validate or certify its properties, such as its integrity or
+      scope.
+
+   *  A presentation proof is a derived artifact that proves claims from
+      a credential in a specific interaction with a verifier.
+
+3.  A Note on History
 
    The origins of the notion of digital identity goes back to the mid
    1990s.  Historically, Internet protocols were designed to deal with
@@ -232,9 +292,9 @@ Table of Contents
    full SSI model can be a special case of a direct presentation
    architecture.
 
-3.  Actors and Entities
+4.  Actors and Entities
 
-3.1.  Subject and Wallet
+4.1.  Subject and Wallet
 
    The subject (aka data subject) is typically a natural person but can
    be thought of as the entity associated with a set of data.  The
@@ -246,7 +306,7 @@ Table of Contents
    to initiate the receipt of credentials from an issuer and the
    transmission of digital credentials to a verifier.
 
-3.2.  Credentials and Presentation Proofs
+4.2.  Credentials and Presentation Proofs
 
    A digital identity credential (abbreviated as 'credential' in this
    document) is an object representing a set of data associated with a
@@ -265,7 +325,7 @@ Table of Contents
    subject aswell as legal restrictions that apply to the juristiction
    where the verifier is operating.
 
-3.3.  Issuer and Verifier
+4.3.  Issuer and Verifier
 
    An issuer is a set of protcol endpoints that allow a wallet to
    receive a credential.  Credentials issued by the issuer are
@@ -276,7 +336,7 @@ Table of Contents
    used to provide an application with data about the subject - for
    instance in the context of an authentication process.
 
-4.  Direct Presentation Flow
+5.  Direct Presentation Flow
 
    The basic direct presentation flows looks like this:
 
@@ -344,32 +404,32 @@ Table of Contents
    underlying credential(s).  If successful the data in the proof is
    made available to the application.
 
-5.  Normative Requirements
+6.  Normative Requirements
 
-5.1.  Subject control
+6.1.  Subject control
 
    The wallet SHOULD provide the subject with the means to control which
    data from a credential is used in a presentation proof.
 
-5.2.  Selective Disclosure
+6.2.  Selective Disclosure
 
    A conformant implementation SHOULD identify a format for representing
    digital credentials that make it possible for the subject to select a
    subset of the data present in the credential for inclusion in a
    presentation proof.
 
-5.3.  Issuer Binding
+6.3.  Issuer Binding
 
    A verifier MUST be able to verifiy the identity of the issuer of the
    credential from the presentation proof.
 
-5.4.  Holder Binding
+6.4.  Holder Binding
 
    The verifier MUST be able to verify that the wallet sending the
    presentation proof is the same wallet that received the credential
    from which the presentation proof was derived.
 
-5.5.  Non-linkability and data minimization
+6.5.  Non-linkability and data minimization
 
    The verifier MUST NOT be able to infer information about data or
    subjects not present in the presentation.  This includes any
@@ -378,19 +438,19 @@ Table of Contents
    colluding verifiers MUST NOT be able to infer data not present in
    presentation proofs.
 
-5.6.  Revocation
+6.6.  Revocation
 
    A conformant implementation SHOULD provide a way for an issuer to
    revoke an issued digital credential in such a way that subsequent
    attempts by a verifier to verify the authenticity of proofs based on
    that credential fail.
 
-6.  Profiles
+7.  Profiles
 
    Several profiles of this reference architecture exist.  We present
    two below.
 
-6.1.  A Minimal Profile
+7.1.  A Minimal Profile
 
    A minimal profile of the direct presentation credential architecture
    is as follows:
@@ -431,7 +491,7 @@ Table of Contents
    managed but as a minimal profile it illustrates the components
    necessary to make a direct presentation architecture work.
 
-6.2.  The EU Digital Identity Wallet
+7.2.  The EU Digital Identity Wallet
 
    The EU digital identity wallet (EUID wallet) as defined by the
    architecture reference framework [ARF] is an evolving profile for a
@@ -439,7 +499,7 @@ Table of Contents
    minimal profile above.  Note that the EUID wallet specification is in
    flux and subect to signifficant change.
 
-7.  Security Considerations
+8.  Security Considerations
 
    One of the main security considerations of a direct presentation
    credential architecture is how to establish the transactional trust
@@ -449,13 +509,13 @@ Table of Contents
    credentials are sometimes long-lived which also raises the issue of
    revocation with its associated security requirements.
 
-8.  IANA Considerations
+9.  IANA Considerations
 
    None
 
-9.  References
+10.  References
 
-9.1.  Normative References
+10.1.  Normative References
 
    [OIDC4VCI] Lodderstedt, T., Yatsuda, K., and T. Looker, "OpenID for
               Verifiable Credential Issuance", n.d.,
@@ -474,11 +534,11 @@ Table of Contents
 
    [SDJWT]    Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-05, 30
-              June 2023, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-05>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-17, 1
+              March 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-selective-disclosure-jwt-17>.
 
-9.2.  Informative References
+10.2.  Informative References
 
    [ARF]      COM, "The European Digital identity Wallet architecture
               and Reference framework", n.d., <https://digital-
