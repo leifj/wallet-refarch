@@ -1,14 +1,14 @@
 ---
 title: A reference architecture for direct presentation credential flows
-abbrev: wallet-refarch
-docname: draft-johansson-wallet-refarch-latest
+abbrev: direct-presentation
+docname: draft-johansson-direct-presentation-arch-latest
 category: info
 stream: IETF
 v: 3
 
 ipr: trust200902
 # area: Applications
-keyword: wallet verifiable credentials
+keyword: direct presentation credentials
 
 stand_alone: yes
 smart_quotes: no
@@ -97,9 +97,11 @@ normative:
 
 This document defines a reference architecture for direct presentation flows of digital credentials. The architecture introduces the concept of a presentation mediator as the active component responsible for managing, presenting, and selectively disclosing credentials while preserving a set of security and privacy promises that will also be defined.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119, BCP 14 {{RFC2119}}.
-
 --- middle
+
+# Conventions
+
+{::boilerplate bcp14-tagged}
 
 # Introduction
 
@@ -166,25 +168,25 @@ The limitation of this type of architecture and the need to evolve the architect
 
 The notion of "Self Sovreign Identity" (SSI) was first introduced in the blogpost [PathToSSI] by Christopher Allen. The concept initially relied heavily on the assumed dependency on blockchain technology. Recently there has been work to abstract the concepts of SSI away from a dependency on specificy technical solutions and desribe the key concepts of SSI independently of the use of blockchain.
 
-The purpose of this document is to create a reference architecture for some of the concepts involved in SSI in such a way that different implementations can be contrasted and compared. This document attempts to define a set of core normative requirement and also introduce the notion of direct presentation flow to denote the practice of using a digital wallet to allow the data subject control over the digital credential sharing flow.
+The purpose of this document is to create a reference architecture for some of the concepts involved in SSI in such a way that different implementations can be contrasted and compared. This document attempts to define a set of core normative requirement and also introduce the notion of direct presentation flow to denote the practice of using a mediator to allow the data subject control over the digital credential sharing flow.
 
 Direct presentation flow should be seen as a generalization of the Self-Sovereign Identity concept in the sense that unlike SSI, direct presentation make no assumptions or value judgements about the relative merits of third party data ownership and control. The basic architecture of direct presentation does empower the user with more control than the federated model does but in the SSI architecture the user always has full control over every aspect of data sharing with the RP. This is not necessarily true (eg for legal reasons) in all cases which is why there is a need to desribe the technical underpinnings of direct presentation flows in such a way that the full SSI model can be a special case of a direct presentation architecture.
 
 # Actors and Entities
 
-## Subject and Wallet
+## Subject and Mediator
 
-The subject (aka data subject) is typically a natural person but can be thought of as the entity associated with a set of data. The subject controls a digital identity wallet (abbreviated as 'wallet' in this document). The wallet is used by the subject to communicate with issuers and verifiers and acts as a container for digital credentials and presentation proofs. The nature of the control the user has over the wallet varies but minimally the user must be able to initiate the receipt of credentials from an issuer and the transmission of digital credentials to a verifier.
+The subject (aka data subject) is typically a natural person but can be thought of as the entity associated with a set of data. The subject controls a presentation mediator (mediator for short). The mediator is used by the subject to communicate with issuers and verifiers and acts as a container for digital credentials and presentation proofs. The nature of the control the user has over the mediator varies but minimally the user must be able to initiate the receipt of credentials from an issuer and the transmission of digital credentials to a verifier.
 
 ## Credentials and Presentation Proofs
 
-A digital identity credential (abbreviated as 'credential' in this document) is an object representing a set of data associated with a subject. The credential MAY contain data that uniquely identify a single subject. A digital identity credential is typically cryptographically bound both to the issuer and to the wallet where it is stored. A presentation proof (abbreviated as 'presentation' in this document) is a proof that a particular issuer has provided a particular set of credentials to the wallet. A presentation can be verified by at least one verifier. A presentation proof can be based on data present in a single credential or in multiple or even on the result of computations based on a set of credentials. A common example is a presentation proof that a subject is legally permitted to take driving lessons. This is a binary attribute the result of a computation involving knowledge of both the biological age of the subject aswell as legal restrictions that apply to the juristiction where the verifier is operating.
+A digital identity credential (abbreviated as 'credential' in this document) is an object representing a set of data associated with a subject. The credential MAY contain data that uniquely identify a single subject. A digital identity credential is typically cryptographically bound both to the issuer and to the mediator where it is stored. A presentation proof (abbreviated as 'presentation' in this document) is a proof that a particular issuer has provided a particular set of credentials to the mediator. A presentation can be verified by at least one verifier. A presentation proof can be based on data present in a single credential or in multiple or even on the result of computations based on a set of credentials. A common example is a presentation proof that a subject is legally permitted to take driving lessons. This is a binary attribute the result of a computation involving knowledge of both the biological age of the subject aswell as legal restrictions that apply to the juristiction where the verifier is operating.
 
 ## Issuer and Verifier
 
-An issuer is a set of protcol endpoints that allow a wallet to receive a credential. Credentials issued by the issuer are cryptographically bound to that issuer and to the receiving wallet.
+An issuer is a set of protcol endpoints that allow a mediator to receive a credential. Credentials issued by the issuer are cryptographically bound to that issuer and to the receiving mediator.
 
-A verfier is a set of protocol endpoints that allow a wallet to send a presentation to a verifier. A verifier is typically a component used to provide an application with data about the subject - for instance in the context of an authentication process.
+A verfier is a set of protocol endpoints that allow a mediator to send a presentation to a verifier. A verifier is typically a component used to provide an application with data about the subject - for instance in the context of an authentication process.
 
 # Direct Presentation Flow
 
@@ -192,44 +194,44 @@ The basic direct presentation flows looks like this:
 
 ~~~ plantuml
 group issuance
-   Subject --> Wallet: <<initiate credential request>>
-   activate Wallet
-   Issuer <-- Wallet: request credential
+   Subject --> Mediator: <<initiate credential request>>
+   activate Mediator
+   Issuer <-- Mediator: request credential
    activate Issuer
    Issuer --> Issuer: <<generate credential>>
    return credential
    deactivate Issuer
-   deactivate Wallet
+   deactivate Mediator
 end
 
 group verification
-   Verifier --> Wallet: request presentation
-   activate Wallet
-   Wallet --> Subject: <<prompt to select credential(s)>>
+   Verifier --> Mediator: request presentation
+   activate Mediator
+   Mediator --> Subject: <<prompt to select credential(s)>>
    activate Subject
-   Wallet <-- Subject: <<pick credential(s)>>
+   Mediator <-- Subject: <<pick credential(s)>>
    deactivate Subject
-   Wallet --> Wallet: <<generate presentation from credential(s)>>
+   Mediator --> :Mediator <<generate presentation from credential(s)>>
    return presentation
-   deactivate Wallet
+   deactivate Mediator
 end
 ~~~
 
-The wallet (acting on behalf of the subject) requests a credential from the issuer. The way this flow is initiated is implementation dependent and in some cases (notably in {{OIDC4VCI}}) the flow often starts with the subject visiting a web page at the issuer where the subject is first authenticated and then presented with means to launch a credential issuance request using their wallet. These details are left out from the diagram above.
+The mediator (acting on behalf of the subject) requests a credential from the issuer. The way this flow is initiated is implementation dependent and in some cases (notably in {{OIDC4VCI}}) the flow often starts with the subject visiting a web page at the issuer where the subject is first authenticated and then presented with means to launch a credential issuance request using their mediator. These details are left out from the diagram above.
 
 The credential is somehow generated by the issuer. This is implementation dependent. The claims in the credential typically comes from some source with which the issuer has a trust relationship. The term "authentic source" is sometimes used when there is a need to distinguish the source of the claims in a credential from the source of the credential which by definition is the issuer.
 
-The wallet receives a credential from the issuer. The credential is typically bound both to the wallet instance and to the issuer in such a way that presentation proofs generated from the credential can be used to verify said bindings.
+The mediator receives a credential from the issuer. The credential is typically bound both to the mediator instance and to the issuer in such a way that presentation proofs generated from the credential can be used to verify said bindings.
 
-At some later point, the subject wants to use the credentials in their wallet to provide identity data to an application. The application has a verifier (a specific software component responsible for verifying presentation proofs) associated with it. The wallet - often after involving the user in some form of interaction to choose which credential(s) to use and what parts of the credential(s) to include - generates a presentation proof and sends it to the verifier. The precise way this flow is initiated is again implementation dependent and in some cases (notably {{OIDC4VP}}) the flow starts with the subject visiting the application and hitting a "login" button which directs the users device to launch the wallet instance to complete the flow. These details are left out of the diagram above.
+At some later point, the subject wants to use the credentials in their mediator to provide identity data to an application. The application has a verifier (a specific software component responsible for verifying presentation proofs) associated with it. The mediator - often after involving the user in some form of interaction to choose which credential(s) to use and what parts of the credential(s) to include - generates a presentation proof and sends it to the verifier. The precise way this flow is initiated is again implementation dependent and in some cases (notably {{OIDC4VP}}) the flow starts with the subject visiting the application and hitting a "login" button which directs the users device to launch the mediator instance to complete the flow. These details are left out of the diagram above.
 
-Upon receipt of the presentation the verifier verifies the issuer and wallet binding (aka holder binding) of the proof and - if the implementation supports revocation - the current validity of the underlying credential(s). If successful the data in the proof is made available to the application.
+Upon receipt of the presentation the verifier verifies the issuer and mediator binding (aka holder binding) of the proof and - if the implementation supports revocation - the current validity of the underlying credential(s). If successful the data in the proof is made available to the application.
 
 # Normative Requirements
 
 ## Subject control
 
-The wallet SHOULD provide the subject with the means to control which data from a credential is used in a presentation proof.
+The mediator SHOULD provide the subject with the means to control which data from a credential is used in a presentation proof.
 
 ## Selective Disclosure
 
@@ -241,11 +243,11 @@ A verifier MUST be able to verifiy the identity of the issuer of the credential 
 
 ## Holder Binding
 
-The verifier MUST be able to verify that the wallet sending the presentation proof is the same wallet that received the credential from which the presentation proof was derived.
+The verifier MUST be able to verify that the mediator sending the presentation proof is the same mediator that received the credential from which the presentation proof was derived.
 
 ## Non-linkability and data minimization
 
-The verifier MUST NOT be able to infer information about data or subjects not present in the presentation. This includes any association between the wallet or subject and other issuers and verifiers not associated with the presentation. In particular, colluding verifiers MUST NOT be able to infer data not present in presentation proofs.
+The verifier MUST NOT be able to infer information about data or subjects not present in the presentation. This includes any association between the mediator or subject and other issuers and verifiers not associated with the presentation. In particular, colluding verifiers MUST NOT be able to infer data not present in presentation proofs.
 
 ## Revocation
 
@@ -262,17 +264,17 @@ A minimal profile of the direct presentation credential architecture is as follo
   1. Digital credentials are represented as SD-JWT objects {{SDJWT}}
   2. An issuer implements the OP side of {{OIDC4VCI}}
   3. A verifier implements RP side of {{OIDC4VP}}
-  4. A wallet implements the RP side of {{OIDC4VCI}} and the OP side of {{OIDC4VP}}
+  4. A mediator implements the RP side of {{OIDC4VCI}} and the OP side of {{OIDC4VP}}
 
-A wallet conforming to this profile is essentially an openid connect store-and-proove proxy with a user interface allowing the subject control over selective disclosure.
+A mediator conforming to this profile is essentially an openid connect store-and-proove proxy with a user interface allowing the subject control over selective disclosure.
 
 This minimal profile fulfills several of the requirements in the previous section:
 
   * Selective disclosure is provided by the use of SD-JWT objects to represent credential and presentation objects.
-  * Issuer binding is provided by a combination of digital signatures on SD-JWTs and OpenID connect authentication between the wallet and issuer.
-  * Non-linkability is provided by not reusing SD-JWTs from the issuer for multiple presentations. The wallet MAY obtain multiple copies of the same SD-JWT credentials from the wallet at the same time. These can then be used to generate separate presentation objects, never reusing the same SD-JWT credential for separate verifiers.
+  * Issuer binding is provided by a combination of digital signatures on SD-JWTs and OpenID connect authentication between the mediator and issuer.
+  * Non-linkability is provided by not reusing SD-JWTs from the issuer for multiple presentations. The mediator MAY obtain multiple copies of the same SD-JWT credentials from the mediator at the same time. These can then be used to generate separate presentation objects, never reusing the same SD-JWT credential for separate verifiers.
 
-  This profile does not provide any solution for revocation and it leaves the question of how OpenID connect entities (issuers, verifiers and wallets) trust each other. There are also real scalability issues involved in how the digital signature keys are managed but as a minimal profile it illustrates the components necessary to make a direct presentation architecture work.
+  This profile does not provide any solution for revocation and it leaves the question of how OpenID connect entities (issuers, verifiers and mediator) trust each other. There are also real scalability issues involved in how the digital signature keys are managed but as a minimal profile it illustrates the components necessary to make a direct presentation architecture work.
 
 ## The EU Digital Identity Wallet
 
@@ -280,7 +282,7 @@ The EU digital identity wallet (EUID wallet) as defined by the architecture refe
 
 # Security Considerations
 
-One of the main security considerations of a direct presentation credential architecture is how to establish the transactional trust between both the entities (wallets, issuers and verifiers) aswell as the technical trust necessary for the cryptographic binding between the digital credentials and their associated presentation. Digital credentials are sometimes long-lived which also raises the issue of revocation with its associated security requirements.
+One of the main security considerations of a direct presentation credential architecture is how to establish the transactional trust between both the entities (mediators, issuers and verifiers) aswell as the technical trust necessary for the cryptographic binding between the digital credentials and their associated presentation. Digital credentials are sometimes long-lived which also raises the issue of revocation with its associated security requirements.
 
 # IANA Considerations
 
