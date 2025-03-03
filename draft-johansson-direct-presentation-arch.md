@@ -204,7 +204,7 @@ A verfier is a set of protocol endpoints that allow a mediator to send a present
 
 # Presentation Flows
 
-Credential presentation flows describe how credentials move from the presenter to the verifier. This architecture focuses on direct presentation flows, but it also accommodates variations such as delegated and assisted presentations.
+Credential presentation flows describe how information from credentials are transmitted from the mediator to the verifier. This architecture focuses on direct presentation flows, but it also accommodates variations such as delegated and assisted presentations.
 
 ## Direct Presentation Flow
 
@@ -220,17 +220,18 @@ group issuance
    return credential
    deactivate Issuer
    deactivate Mediator
+   deactivate Subject
 end
 
 group verification
    Verifier --> Mediator: request presentation
    activate Mediator
-   Mediator --> Subject: <<prompt to select credential(s)>>
-   activate Subject
-   Mediator <-- Subject: <<pick credential(s)>>
-   deactivate Subject
-   Mediator --> :Mediator <<generate presentation from credential(s)>>
-   return presentation
+   Mediator --> Presenter: <<prompt to select credential(s)>>
+   activate Presenter
+   Mediator <-- Presenter: <<select claims from credential(s)>>
+   deactivate Presenter
+   Mediator --> Mediator: <<generate presentation proof selection>>
+   return presentation proof
    deactivate Mediator
 end
 ~~~
