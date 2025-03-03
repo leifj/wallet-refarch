@@ -290,17 +290,19 @@ One of the main security considerations of a direct presentation credential arch
 
 # IANA Considerations
 
-None
+None so far
 
 --- back
 
 # Acknowledgments
 {:numbered="false"}
 
-Several people have contributed to this text through discussion.
-The author especially wishes to acknowledge the following individuals:
+Several people have contributed to this text through discussion. The author especially wishes to acknowledge the following individuals who have helped shape the thinking around trust and identity in general and this topic in particular.
 
 - Pamela Dingle
 - Heather Flanagan
 - Peter Altman
 - Giuseppe DeMarco
+- Lucy Lynch
+- R.L. 'Bob' Morgan
+- Jeff Hodges
