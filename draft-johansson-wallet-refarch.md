@@ -7,7 +7,7 @@ stream: IETF
 v: 3
 
 ipr: trust200902
-area: Applications
+# area: Applications
 keyword: wallet verifiable credentials
 
 stand_alone: yes
