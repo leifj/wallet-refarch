@@ -95,15 +95,39 @@ normative:
 
 --- abstract
 
-This document provides a general reference architecture for direct presentation credential flows, often called "digital identity wallets".
+This document defines a reference architecture for direct presentation flows of digital credentials. The architecture introduces the concept of a presentation mediator as the active component responsible for managing, presenting, and selectively disclosing credentials while preserving a set of security and privacy promises that will also be defined.
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119, BCP 14 {{RFC2119}}.
 
 --- middle
 
 # Introduction
 
-The term "digital wallet" or "digital identity wallet" is often used to denote a container for digital objects representing information about a subject. Such objects are often called "digital credentials". The use of the word "wallet" is both historic, stemming from the origin of some types of wallet in the "crypto" or digital asset community, aswell as meant to make the user think of a physical wallet where digital credentials correspond to things like credit cards, currency, loyalty cards, identity cards etc. The wallet concept is a powerful conceptual tool and this document does not claim to define or constrain all aspects of the use of the term "digital wallet". Instead this document is attempting to define a reference architecture for a type of digital identity architectures where a form of digital wallet is used to facilitate the flow of digital _identity_ credentials. Specifically, this document does not concern itself with digital currency schemes or "crypto" wallets.
+Digital credentials, which assert claims about individuals, organizations, or devices, have become essential tools in modern identity systems. Whether verifying an individual's qualifications, attesting to an enterprise's compliance, or authorizing an IoT device, these credentials rely on secure, efficient, and privacy-preserving mechanisms for their use.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119, BCP 14 {{RFC2119}}.
+Traditional federated identity systems often rely on intermediaries or delegation, which can compromise user privacy or introduce inefficiencies. This document presents an architecture for direct presentation flows, where credentials are presented directly to verifiers without unnecessary intermediaries, empowering the data subject or their authorized representative to maintain control over the credential's use.
+
+At the heart of this architecture is the presentation mediator, an active software component responsible for facilitating secure and privacy-aware interactions. This mediator works in tandem with passive credential stores, verifiers, and issuers, creating a scalable and interoperable system that can adapt to diverse regulatory and operational environments.
+
+# Terminology
+
+## Naming the elephant in the room
+
+The term "digital wallet" or "digital identity wallet" is often used to denote a container for digital objects representing information about a subject. Such objects are often called "digital credentials". The use of the word "wallet" is both historic, stemming from the origin of some types of wallet in the "crypto" or digital asset community, aswell as meant to make the user think of a physical wallet where digital credentials correspond to things like credit cards, currency, loyalty cards, identity cards etc.
+
+Arguably the use of the term wallet is often confusing since it may lead to assumptions about the fungibility of identity or that credentials are exchanged as part of a monetary transaction. In this specification we will use the term "persentation mediator" when traditionally the term "identity wallet" or "wallet" has been used.
+
+## Terminology used in this specification
+
+To anchor this architecture, we define key terms:
+
+- A presentation mediator is an active software component that manages the presentation of credentials, ensuring that only the necessary claims are disclosed to the verifier.
+- A credential store is a passive repository for securely storing credentials. It supports the presentation mediator by providing access to stored credentials without performing active operations.
+- The data subject is the entity the credential pertains to, such as an individual or organization.
+- A presenter is the actor that delivers a credential to a verifier. While often the data subject, the presenter could also be an authorized agent or software acting on their behalf.
+- A credential is a signed, structured document containing claims about a subject, issued by a trusted entity.
+- An attestation is a statement about a credential, often used to validate or certify its properties, such as its integrity or scope.
+- A presentation proof is a derived artifact that proves claims from a credential in a specific interaction with a verifier.
 
 # A Note on History
 
