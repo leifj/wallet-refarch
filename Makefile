@@ -1,5 +1,7 @@
 LIBDIR := lib
 
+export UPLOAD_EMAIL ?= leifj@sunet.se
+
 plantuml-dep ?= .plantuml.dep
 DEPS_FILES += $(plantuml-dep)
 
