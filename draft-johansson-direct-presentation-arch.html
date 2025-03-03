@@ -14,17 +14,17 @@
 <meta content="draft-johansson-direct-presentation-arch-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.28.0
-    Python 3.12.3
+    Python 3.12.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.5
-    lxml 5.3.1
+    lxml 5.3.0
     platformdirs 4.3.6
     pycountry 24.6.1
     PyYAML 6.0.2
     requests 2.32.3
-    setuptools 75.8.2
+    setuptools 70.3.0
     wcwidth 0.2.13
 -->
 <link href="draft-johansson-direct-presentation-arch.xml" rel="alternate" type="application/rfc+xml">
@@ -1161,18 +1161,32 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-actors-and-entities" class="internal xref">Actors and Entities</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-subject-and-mediator" class="internal xref">Subject and Mediator</a></p>
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-subject-and-presenter" class="internal xref">Subject and Presenter</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-credentials-and-presentatio" class="internal xref">Credentials and Presentation Proofs</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-presentation-mediator" class="internal xref">Presentation Mediator</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-issuer-and-verifier" class="internal xref">Issuer and Verifier</a></p>
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-credential-store" class="internal xref">Credential Store</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-credentials-and-presentatio" class="internal xref">Credentials and Presentation Proofs</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-issuer-and-verifier" class="internal xref">Issuer and Verifier</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-direct-presentation-flow" class="internal xref">Direct Presentation Flow</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-presentation-flows" class="internal xref">Presentation Flows</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-direct-presentation-flow" class="internal xref">Direct Presentation Flow</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-delegated-or-assisted-prese" class="internal xref">Delegated or Assisted Presentation Flow</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-normative-requirements" class="internal xref">Normative Requirements</a></p>
@@ -1187,7 +1201,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-issuer-binding" class="internal xref">Issuer Binding</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
-                <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-holder-binding" class="internal xref">Holder Binding</a></p>
+                <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-mediator-binding" class="internal xref">Mediator Binding</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.5">
                 <p id="section-toc.1-1.7.2.5.1"><a href="#section-7.5" class="auto internal xref">7.5</a>.  <a href="#name-non-linkability-and-data-mi" class="internal xref">Non-linkability and data minimization</a></p>
@@ -1201,10 +1215,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-profiles" class="internal xref">Profiles</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
-                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-a-minimal-profile" class="internal xref">A Minimal Profile</a></p>
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-openid-and-sd-jwt" class="internal xref">OpenID and SD-JWT</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
-                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-the-eu-digital-identity-wal" class="internal xref">The EU Digital Identity Wallet</a></p>
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-anoncreds" class="internal xref">Anoncreds</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-the-eu-digital-identity-wal" class="internal xref">The EU Digital Identity Wallet</a></p>
 </li>
             </ul>
 </li>
@@ -1278,7 +1295,7 @@ appear in all capitals, as shown here.<a href="#section-1-1" class="pilcrow">¶<
 <p id="section-3.2-1">To anchor this architecture, we define key terms:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.2-2.1">
-            <p id="section-3.2-2.1.1">A presentation mediator is an active software component that manages the presentation of credentials, ensuring that only the necessary claims are disclosed to the verifier.<a href="#section-3.2-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-3.2-2.1.1">A presentation mediator is an active software component that manages the presentation of credentials to the verifier on behalf of the data subject.<a href="#section-3.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.2-2.2">
             <p id="section-3.2-2.2.1">A credential store is a passive repository for securely storing credentials. It supports the presentation mediator by providing access to stored credentials without performing active operations.<a href="#section-3.2-2.2.1" class="pilcrow">¶</a></p>
@@ -1318,64 +1335,43 @@ appear in all capitals, as shown here.<a href="#section-1-1" class="pilcrow">¶<
 <p id="section-4-8">A brief illustration of the typical federation flow is useful. For the purpose of this illustration we are not considering the precise way in which protocol messages are transported between IdP and RP, nor do we consider how the Subject is represented in the interaction between the IdP and RP (eg if a user-agent is involved).<a href="#section-4-8" class="pilcrow">¶</a></p>
 <div id="section-4-9">
         <div class="alignLeft art-svg artwork" id="section-4-9.1">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="294px" preserveAspectRatio="none" version="1.1" viewBox="0 0 425 294" width="425px">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="270px" preserveAspectRatio="none" version="1.1" viewBox="0 0 388 270" width="388px">
             <defs></defs>
             <g>
-              <line x1="42" x2="42" y1="41.0679" y2="251.304" stroke="black" stroke-width="1.0"></line>
-              <line x1="226.5" x2="226.5" y1="41.0679" y2="251.304" stroke="black" stroke-width="1.0"></line>
-              <line x1="398" x2="398" y1="41.0679" y2="251.304" stroke="black" stroke-width="1.0"></line>
-              <rect fill="white" height="33.0679" width="64" x="8" y="3" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="15" y="24.9659">Subject</text>
-              <rect fill="white" height="33.0679" width="64" x="8" y="250.304" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="15" y="272.27">Subject</text>
-              <rect fill="white" height="33.0679" width="31" x="209.5" y="3" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="216.5" y="24.9659">RP</text>
-              <rect fill="white" height="33.0679" width="31" x="209.5" y="250.304" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="216.5" y="272.27">RP</text>
-              <rect fill="white" height="33.0679" width="36" x="378" y="3" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="385" y="24.9659">IdP</text>
-              <rect fill="white" height="33.0679" width="36" x="378" y="250.304" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="385" y="272.27">IdP</text>
-              <polygon fill="black" points="215,70.7739,225,74.7739,215,78.7739,219,74.7739" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="42" x2="221" y1="74.7739" y2="74.7739" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="49" y="68.9649">Initiate authentication flow</text>
-              <polygon fill="black" points="386,102.4799,396,106.4799,386,110.4799,390,106.4799" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="227" x2="392" y1="106.4799" y2="106.4799" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="234" y="100.6709">Authentication request</text>
-              <polygon fill="black" points="53,134.186,43,138.186,53,142.186,49,138.186" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="47" x2="397" y1="138.186" y2="138.186" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="59" y="132.377">Prompt for login credentials</text>
-              <polygon fill="black" points="386,165.892,396,169.892,386,173.892,390,169.892" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="42" x2="392" y1="169.892" y2="169.892" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="49" y="164.083">Presents login credentials</text>
-              <polygon fill="black" points="238,197.598,228,201.598,238,205.598,234,201.598" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="232" x2="397" y1="201.598" y2="201.598" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="244" y="195.789">Authentication response</text>
-              <polygon fill="black" points="53,229.304,43,233.304,53,237.304,49,233.304" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="47" x2="226" y1="233.304" y2="233.304" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="59" y="227.495">Success!</text>
-              <!--MD5=[ebac459b1f9af4aa1a12b128aefda08c]
-@startuml
-
-Subject -> RP: Initiate authentication flow
-RP -> IdP: Authentication request
-IdP - -> Subject: Prompt for login credentials
-Subject - -> IdP: Presents login credentials
-RP <- - IdP: Authentication response
-Subject <- - RP: Success!
-
-@enduml
-
-PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
-(GPL source distribution)
-Java Runtime: OpenJDK Runtime Environment
-JVM: OpenJDK 64-Bit Server VM
-Java Version: 21.0.6+7-Ubuntu-124.04.1
-Operating System: Linux
-Default Encoding: UTF-8
-Language: en
-Country: US
--->
+              <line x1="35" x2="35" y1="36.7999" y2="234.4" stroke="black" stroke-width="0.5"></line>
+              <line x1="204.775" x2="204.775" y1="36.7999" y2="234.4" stroke="black" stroke-width="0.5"></line>
+              <line x1="365.0801" x2="365.0801" y1="36.7999" y2="234.4" stroke="black" stroke-width="0.5"></line>
+              <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="60.5498" x="5" y="5" stroke="black" stroke-width="0.5"></rect>
+              <text fill="black" font-family="sans-serif" font-size="14" x="12" y="25.9999">Subject</text>
+              <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="60.5498" x="5" y="233.4" stroke="black" stroke-width="0.5"></rect>
+              <text fill="black" font-family="sans-serif" font-size="14" x="12" y="254.3999">Subject</text>
+              <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="33.1099" x="188.775" y="5" stroke="black" stroke-width="0.5"></rect>
+              <text fill="black" font-family="sans-serif" font-size="14" x="195.775" y="25.9999">RP</text>
+              <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="33.1099" x="188.775" y="233.4" stroke="black" stroke-width="0.5"></rect>
+              <text fill="black" font-family="sans-serif" font-size="14" x="195.775" y="254.3999">RP</text>
+              <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="34.9019" x="348.0801" y="5" stroke="black" stroke-width="0.5"></rect>
+              <text fill="black" font-family="sans-serif" font-size="14" x="355.0801" y="25.9999">IdP</text>
+              <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="34.9019" x="348.0801" y="233.4" stroke="black" stroke-width="0.5"></rect>
+              <text fill="black" font-family="sans-serif" font-size="14" x="355.0801" y="254.3999">IdP</text>
+              <polygon fill="black" points="193.33,64.3999,203.33,68.3999,193.33,72.3999,197.33,68.3999" stroke="black" stroke-width="1.0"></polygon>
+              <line x1="35.2749" x2="199.33" y1="68.3999" y2="68.3999" stroke="black" stroke-width="1.0"></line>
+              <text fill="black" font-family="sans-serif" font-size="13" x="42.2749" y="63.7999">Initiate authentication flow</text>
+              <polygon fill="black" points="353.531,94,363.531,98,353.531,102,357.531,98" stroke="black" stroke-width="1.0"></polygon>
+              <line x1="205.33" x2="359.531" y1="98" y2="98" stroke="black" stroke-width="1.0"></line>
+              <text fill="black" font-family="sans-serif" font-size="13" x="212.33" y="93.4">Authentication request</text>
+              <polygon fill="black" points="46.2749,123.6,36.2749,127.6,46.2749,131.6,42.2749,127.6" stroke="black" stroke-width="1.0"></polygon>
+              <line x1="40.2749" x2="364.531" y1="127.6" y2="127.6" stroke="black" stroke-width="1.0"></line>
+              <text fill="black" font-family="sans-serif" font-size="13" x="52.2749" y="123">Prompt for login credentials</text>
+              <polygon fill="black" points="353.531,153.2,363.531,157.2,353.531,161.2,357.531,157.2" stroke="black" stroke-width="1.0"></polygon>
+              <line x1="35.2749" x2="359.531" y1="157.2" y2="157.2" stroke="black" stroke-width="1.0"></line>
+              <text fill="black" font-family="sans-serif" font-size="13" x="42.2749" y="152.6">Presents login credentials</text>
+              <polygon fill="black" points="216.33,182.8,206.33,186.8,216.33,190.8,212.33,186.8" stroke="black" stroke-width="1.0"></polygon>
+              <line x1="210.33" x2="364.531" y1="186.8" y2="186.8" stroke="black" stroke-width="1.0"></line>
+              <text fill="black" font-family="sans-serif" font-size="13" x="222.33" y="182.2">Authentication response</text>
+              <polygon fill="black" points="46.2749,212.4,36.2749,216.4,46.2749,220.4,42.2749,216.4" stroke="black" stroke-width="1.0"></polygon>
+              <line x1="40.2749" x2="204.33" y1="216.4" y2="216.4" stroke="black" stroke-width="1.0"></line>
+              <text fill="black" font-family="sans-serif" font-size="13" x="52.2749" y="211.8">Success!</text>
+              <!--SRC=[TOz12W8n34NtFKKyG2ymYE1oTcLwWjh9QAGsOvCorxT5HX1q_L_U8xvUxXWLx0acDy2OIIaeGgXwmwmKWn9dM19lPd8T6-V6dR_dWi-AegPjO1lZtzO1NE77gh1mWSHNoX0Bplqm935-R-zMLr3QA3_OrZvQ-oSkAsV1Zw-3_HbVOqIHWta1]-->
   </g>
           </svg><a href="#section-4-9.1" class="pilcrow">¶</a>
 </div>
@@ -1403,156 +1399,162 @@ Country: US
       <h2 id="name-actors-and-entities">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-actors-and-entities" class="section-name selfRef">Actors and Entities</a>
       </h2>
-<div id="subject-and-mediator">
+<div id="subject-and-presenter">
 <section id="section-5.1">
-        <h3 id="name-subject-and-mediator">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-subject-and-mediator" class="section-name selfRef">Subject and Mediator</a>
+        <h3 id="name-subject-and-presenter">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-subject-and-presenter" class="section-name selfRef">Subject and Presenter</a>
         </h3>
-<p id="section-5.1-1">The subject (aka data subject) is typically a natural person but can be thought of as the entity associated with a set of data. The subject controls a presentation mediator (mediator for short). The mediator is used by the subject to communicate with issuers and verifiers and acts as a container for digital credentials and presentation proofs. The nature of the control the user has over the mediator varies but minimally the user must be able to initiate the receipt of credentials from an issuer and the transmission of digital credentials to a verifier.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">The data subject is the entity that the credential describes, such as an individual, an organization, or even an IoT device. However, the presenter—the actor delivering the credential to the verifier—may not always be the data subject. For example, an administrator might present credentials on behalf of an organization, or a software agent might act as a presenter in automated workflows.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-2">This distinction between the data subject and the presenter allows the architecture to support complex use cases, such as power-of-attorney scenarios or enterprise credentialing systems.<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="presentation-mediator">
+<section id="section-5.2">
+        <h3 id="name-presentation-mediator">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-presentation-mediator" class="section-name selfRef">Presentation Mediator</a>
+        </h3>
+<p id="section-5.2-1">The presentation mediator (mediator for short) is the core active component of this architecture. It initiates and mediates credential presentations, ensuring compliance with data subject preferences and system policies. For example, it might enforce selective disclosure, revealing only the subject's date of birth to a verifier while withholding other personal details. The subject controls a presentation mediator.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">Unlike a credential store, the presentation mediator is responsible for orchestrating interactions with verifiers, performing cryptographic operations, and generating presentation proofs.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">The mediator is used by the subject to communicate with issuers and verifiers. The nature of the control the user has over the mediator varies but minimally the user must be able to initiate the receipt of credentials from an issuer and the generation and transmission of presentation proofs to a verifier.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="credential-store">
+<section id="section-5.3">
+        <h3 id="name-credential-store">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-credential-store" class="section-name selfRef">Credential Store</a>
+        </h3>
+<p id="section-5.3-1">The credential store is a passive repository where credentials are securely stored. Its primary function is to provide the presentation mediator with access to the credentials it needs to generate presentation proofs. By separating storage from active mediation, the architecture enhances modularity and allows credential stores to be managed independently from presentation logic.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="credentials-and-presentation-proofs">
-<section id="section-5.2">
+<section id="section-5.4">
         <h3 id="name-credentials-and-presentatio">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-credentials-and-presentatio" class="section-name selfRef">Credentials and Presentation Proofs</a>
+<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-credentials-and-presentatio" class="section-name selfRef">Credentials and Presentation Proofs</a>
         </h3>
-<p id="section-5.2-1">A digital identity credential (abbreviated as 'credential' in this document) is an object representing a set of data associated with a subject. The credential <span class="bcp14">MAY</span> contain data that uniquely identify a single subject. A digital identity credential is typically cryptographically bound both to the issuer and to the mediator where it is stored. A presentation proof (abbreviated as 'presentation' in this document) is a proof that a particular issuer has provided a particular set of credentials to the mediator. A presentation can be verified by at least one verifier. A presentation proof can be based on data present in a single credential or in multiple or even on the result of computations based on a set of credentials. A common example is a presentation proof that a subject is legally permitted to take driving lessons. This is a binary attribute the result of a computation involving knowledge of both the biological age of the subject aswell as legal restrictions that apply to the juristiction where the verifier is operating.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.4-1">A digital identity credential (abbreviated as 'credential' in this document) is an object representing a set of data associated with a subject. The credential <span class="bcp14">MAY</span> contain data that uniquely identify a single subject. A digital identity credential is typically cryptographically bound both to the issuer and to the mediator where it is stored. A presentation proof (abbreviated as 'presentation' in this document) is a proof that a particular issuer has provided a particular set of credentials to the mediator. A presentation can be verified by at least one verifier. A presentation proof can be based on data present in a single credential or in multiple or even on the result of computations based on a set of credentials. A common example is a presentation proof that a subject is legally permitted to take driving lessons. This is a binary attribute the result of a computation involving knowledge of both the biological age of the subject aswell as legal restrictions that apply to the juristiction where the verifier is operating.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="issuer-and-verifier">
-<section id="section-5.3">
+<section id="section-5.5">
         <h3 id="name-issuer-and-verifier">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-issuer-and-verifier" class="section-name selfRef">Issuer and Verifier</a>
+<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-issuer-and-verifier" class="section-name selfRef">Issuer and Verifier</a>
         </h3>
-<p id="section-5.3-1">An issuer is a set of protcol endpoints that allow a mediator to receive a credential. Credentials issued by the issuer are cryptographically bound to that issuer and to the receiving mediator.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">A verfier is a set of protocol endpoints that allow a mediator to send a presentation to a verifier. A verifier is typically a component used to provide an application with data about the subject - for instance in the context of an authentication process.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.5-1">An issuer is a set of protcol endpoints that allow a mediator to receive a credential. Credentials issued by the issuer are cryptographically bound to that issuer and to the receiving mediator.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
+<p id="section-5.5-2">A verfier is a set of protocol endpoints that allow a mediator to send a presentation to a verifier. A verifier is typically a component used to provide an application with data about the subject - for instance in the context of an authentication process.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<div id="direct-presentation-flow">
+<div id="presentation-flows">
 <section id="section-6">
-      <h2 id="name-direct-presentation-flow">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-direct-presentation-flow" class="section-name selfRef">Direct Presentation Flow</a>
+      <h2 id="name-presentation-flows">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-presentation-flows" class="section-name selfRef">Presentation Flows</a>
       </h2>
-<p id="section-6-1">The basic direct presentation flows looks like this:<a href="#section-6-1" class="pilcrow">¶</a></p>
-<div id="section-6-2">
-        <div class="alignLeft art-svg artwork" id="section-6-2.1">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="469px" preserveAspectRatio="none" version="1.1" viewBox="0 0 659 469" width="659px">
-            <defs></defs>
-            <g>
-              <rect fill="white" height="31.706" width="10" x="52" y="306.716" stroke="black" stroke-width="1.0"></rect>
-              <rect fill="white" height="108.118" width="10" x="284" y="101.4799" stroke="black" stroke-width="1.0"></rect>
-              <rect fill="white" height="126.8241" width="10" x="284" y="275.01" stroke="black" stroke-width="1.0"></rect>
-              <rect fill="white" height="76.412" width="10" x="421" y="133.186" stroke="black" stroke-width="1.0"></rect>
-              <rect fill="white" height="159.5301" width="581" x="13" y="58.0679" stroke="#000000" stroke-width="2.0"></rect>
-              <rect fill="white" height="178.2361" width="630" x="13" y="231.598" stroke="#000000" stroke-width="2.0"></rect>
-              <line x1="57" x2="57" y1="41.0679" y2="426.8341" stroke="black" stroke-width="1.0"></line>
-              <line x1="288.5" x2="288.5" y1="41.0679" y2="426.8341" stroke="black" stroke-width="1.0"></line>
-              <line x1="426" x2="426" y1="41.0679" y2="426.8341" stroke="black" stroke-width="1.0"></line>
-              <line x1="593.5" x2="593.5" y1="41.0679" y2="426.8341" stroke="black" stroke-width="1.0"></line>
-              <rect fill="white" height="33.0679" width="64" x="23" y="3" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="30" y="24.9659">Subject</text>
-              <rect fill="white" height="33.0679" width="64" x="23" y="425.8341" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="30" y="447.8">Subject</text>
-              <rect fill="white" height="33.0679" width="75" x="249.5" y="3" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="256.5" y="24.9659">Mediator</text>
-              <rect fill="white" height="33.0679" width="75" x="249.5" y="425.8341" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="256.5" y="447.8">Mediator</text>
-              <rect fill="white" height="33.0679" width="56" x="396" y="3" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="403" y="24.9659">Issuer</text>
-              <rect fill="white" height="33.0679" width="56" x="396" y="425.8341" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="403" y="447.8">Issuer</text>
-              <rect fill="white" height="33.0679" width="63" x="560.5" y="3" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="567.5" y="24.9659">Verifier</text>
-              <rect fill="white" height="33.0679" width="63" x="560.5" y="425.8341" stroke="black" stroke-width="1.5"></rect>
-              <text fill="black" font-family="sans-serif" font-size="14" x="567.5" y="447.8">Verifier</text>
-              <rect fill="white" height="31.706" width="10" x="52" y="306.716" stroke="black" stroke-width="1.0"></rect>
-              <rect fill="white" height="108.118" width="10" x="284" y="101.4799" stroke="black" stroke-width="1.0"></rect>
-              <rect fill="white" height="126.8241" width="10" x="284" y="275.01" stroke="black" stroke-width="1.0"></rect>
-              <rect fill="white" height="76.412" width="10" x="421" y="133.186" stroke="black" stroke-width="1.0"></rect>
-              <path d="M13,58.0679 L115,58.0679 L115,67.0679 L105,77.0679 L13,77.0679 L13,58.0679" fill="white" stroke="#000000" stroke-width="1.0"></path>
-              <rect fill="none" height="159.5301" width="581" x="13" y="58.0679" stroke="#000000" stroke-width="2.0"></rect>
-              <text fill="black" font-family="sans-serif" font-size="13" font-weight="bold" x="28" y="72.9649">issuance</text>
-              <polygon fill="black" points="272,97.4799,282,101.4799,272,105.4799,276,101.4799" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="57" x2="278" y1="101.4799" y2="101.4799" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="64" y="95.6709">&lt;&lt;initiate credential request&gt;&gt;</text>
-              <polygon fill="black" points="409,129.186,419,133.186,409,137.186,413,133.186" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="294" x2="415" y1="133.186" y2="133.186" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="301" y="127.377">request credential</text>
-              <line x1="431" x2="473" y1="164.892" y2="164.892" stroke="black" stroke-width="1.0"></line>
-              <line x1="473" x2="473" y1="164.892" y2="177.892" stroke="black" stroke-width="1.0"></line>
-              <line x1="432" x2="473" y1="177.892" y2="177.892" stroke="black" stroke-width="1.0"></line>
-              <polygon fill="black" points="442,173.892,432,177.892,442,181.892,438,177.892" stroke="black" stroke-width="1.0"></polygon>
-              <text fill="black" font-family="sans-serif" font-size="13" x="438" y="159.083">&lt;&lt;generate credential&gt;&gt;</text>
-              <polygon fill="black" points="300,205.598,290,209.598,300,213.598,296,209.598" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="294" x2="425" y1="209.598" y2="209.598" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="306" y="203.789">credential</text>
-              <path d="M13,231.598 L134,231.598 L134,240.598 L124,250.598 L13,250.598 L13,231.598" fill="white" stroke="#000000" stroke-width="1.0"></path>
-              <rect fill="none" height="178.2361" width="630" x="13" y="231.598" stroke="#000000" stroke-width="2.0"></rect>
-              <text fill="black" font-family="sans-serif" font-size="13" font-weight="bold" x="28" y="246.495">verification</text>
-              <polygon fill="black" points="305,271.01,295,275.01,305,279.01,301,275.01" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="299" x2="593" y1="275.01" y2="275.01" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="311" y="269.201">request presentation</text>
-              <polygon fill="black" points="73,302.716,63,306.716,73,310.716,69,306.716" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="67" x2="283" y1="306.716" y2="306.716" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="79" y="300.907">&lt;&lt;prompt to select credential(s)&gt;&gt;</text>
-              <polygon fill="black" points="272,334.4221,282,338.4221,272,342.4221,276,338.4221" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="57" x2="278" y1="338.4221" y2="338.4221" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="64" y="332.6131">&lt;&lt;pick credential(s)&gt;&gt;</text>
-              <polygon fill="black" points="641,366.1281,651,370.1281,641,374.1281,645,370.1281" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="294" x2="647" y1="370.1281" y2="370.1281" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="301" y="364.3191">Mediator &lt;&lt;generate presentation from credential(s)&gt;&gt;</text>
-              <polygon fill="black" points="582,397.8341,592,401.8341,582,405.8341,586,401.8341" stroke="black" stroke-width="1.0"></polygon>
-              <line x1="289" x2="588" y1="401.8341" y2="401.8341" stroke="black" stroke-width="1.0"></line>
-              <text fill="black" font-family="sans-serif" font-size="13" x="296" y="396.0251">presentation</text>
-              <!--MD5=[7eb4a372110aa200953391511fa053dd]
-@startuml
-
-group issuance
-   Subject - -> Mediator: <<initiate credential request>>
-   activate Mediator
-   Issuer <- - Mediator: request credential
-   activate Issuer
-   Issuer - -> Issuer: <<generate credential>>
-   return credential
-   deactivate Issuer
-   deactivate Mediator
-end
-
-group verification
-   Verifier - -> Mediator: request presentation
-   activate Mediator
-   Mediator - -> Subject: <<prompt to select credential(s)>>
-   activate Subject
-   Mediator <- - Subject: <<pick credential(s)>>
-   deactivate Subject
-   Mediator - -> :Mediator <<generate presentation from credential(s)>>
-   return presentation
-   deactivate Mediator
-end
-
-@enduml
-
-PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
-(GPL source distribution)
-Java Runtime: OpenJDK Runtime Environment
-JVM: OpenJDK 64-Bit Server VM
-Java Version: 21.0.6+7-Ubuntu-124.04.1
-Operating System: Linux
-Default Encoding: UTF-8
-Language: en
-Country: US
--->
+<p id="section-6-1">Credential presentation flows describe how information from credentials are transmitted from the mediator to the verifier. This architecture focuses on direct presentation flows, but it also accommodates variations such as delegated and assisted presentations.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<div id="direct-presentation-flow">
+<section id="section-6.1">
+        <h3 id="name-direct-presentation-flow">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-direct-presentation-flow" class="section-name selfRef">Direct Presentation Flow</a>
+        </h3>
+<p id="section-6.1-1">The basic direct presentation flows looks like this:<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<div id="section-6.1-2">
+          <div class="alignLeft art-svg artwork" id="section-6.1-2.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="448px" preserveAspectRatio="none" version="1.1" viewBox="0 0 767 448" width="767px">
+              <defs></defs>
+              <g>
+                <rect fill="white" height="101.8" width="10" x="223.52" y="93" stroke="black" stroke-width="1.0"></rect>
+                <rect fill="white" height="131.4001" width="10" x="223.52" y="256" stroke="black" stroke-width="1.0"></rect>
+                <rect fill="white" height="72.2" width="10" x="479.3651" y="122.6" stroke="black" stroke-width="1.0"></rect>
+                <rect fill="white" height="29.6" width="10" x="710.211" y="285.6" stroke="black" stroke-width="1.0"></rect>
+                <rect fill="none" height="149.0001" width="629.9152" x="10" y="53.7999" stroke="#000000" stroke-width="1.5"></rect>
+                <rect fill="none" height="178.6001" width="577.2368" x="184.5771" y="216.8" stroke="#000000" stroke-width="1.5"></rect>
+                <line x1="50" x2="50" y1="36.7999" y2="412.4001" stroke="black" stroke-width="0.5"></line>
+                <line x1="227.5771" x2="227.5771" y1="36.7999" y2="412.4001" stroke="black" stroke-width="0.5"></line>
+                <line x1="483.7032" x2="483.7032" y1="36.7999" y2="412.4001" stroke="black" stroke-width="0.5"></line>
+                <line x1="639.2223" x2="639.2223" y1="36.7999" y2="412.4001" stroke="black" stroke-width="0.5"></line>
+                <line x1="714.6081" x2="714.6081" y1="36.7999" y2="412.4001" stroke="black" stroke-width="0.5"></line>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="60.5498" x="20" y="5" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="27" y="25.9999">Subject</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="60.5498" x="20" y="411.4001" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="27" y="432.4">Subject</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="67.8858" x="194.5771" y="5" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="201.5771" y="25.9999">Mediator</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="67.8858" x="194.5771" y="411.4001" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="201.5771" y="432.4">Mediator</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="51.3239" x="458.7032" y="5" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="465.7032" y="25.9999">Issuer</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="51.3239" x="458.7032" y="411.4001" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="465.7032" y="432.4">Issuer</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="57.3858" x="611.2223" y="5" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="618.2223" y="25.9999">Verifier</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="57.3858" x="611.2223" y="411.4001" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="618.2223" y="432.4">Verifier</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="73.2058" x="678.6081" y="5" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="685.6081" y="25.9999">Presenter</text>
+                <rect fill="white" height="30.7999" rx="2.5" ry="2.5" width="73.2058" x="678.6081" y="411.4001" stroke="black" stroke-width="0.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="14" x="685.6081" y="432.4">Presenter</text>
+                <rect fill="white" height="101.8" width="10" x="223.52" y="93" stroke="black" stroke-width="1.0"></rect>
+                <rect fill="white" height="131.4001" width="10" x="223.52" y="256" stroke="black" stroke-width="1.0"></rect>
+                <rect fill="white" height="72.2" width="10" x="479.3651" y="122.6" stroke="black" stroke-width="1.0"></rect>
+                <rect fill="white" height="29.6" width="10" x="710.211" y="285.6" stroke="black" stroke-width="1.0"></rect>
+                <path d="M10,53.7999 L111.2251,53.7999 L111.2251,61.3999 L101.2251,71.3999 L10,71.3999 L10,53.7999" fill="white" stroke="#000000" stroke-width="1.5"></path>
+                <rect fill="none" height="149.0001" width="629.9152" x="10" y="53.7999" stroke="#000000" stroke-width="1.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="13" font-weight="bold" x="25" y="67.7999">issuance</text>
+                <polygon fill="black" points="211.52,89,221.52,93,211.52,97,215.52,93" stroke="black" stroke-width="1.0"></polygon>
+                <line x1="50.2749" x2="217.52" y1="93" y2="93" stroke="black" stroke-width="1.0"></line>
+                <text fill="black" font-family="sans-serif" font-size="13" x="57.2749" y="88.4">«initiate credential request»</text>
+                <polygon fill="black" points="467.3651,118.6,477.3651,122.6,467.3651,126.6,471.3651,122.6" stroke="black" stroke-width="1.0"></polygon>
+                <line x1="233.52" x2="473.3651" y1="122.6" y2="122.6" stroke="black" stroke-width="1.0"></line>
+                <text fill="black" font-family="sans-serif" font-size="13" x="240.52" y="118">request credential</text>
+                <line x1="489.3651" x2="531.3651" y1="152.2" y2="152.2" stroke="black" stroke-width="1.0"></line>
+                <line x1="531.3651" x2="531.3651" y1="152.2" y2="165.2" stroke="black" stroke-width="1.0"></line>
+                <line x1="490.3651" x2="531.3651" y1="165.2" y2="165.2" stroke="black" stroke-width="1.0"></line>
+                <polygon fill="black" points="500.3651,161.2,490.3651,165.2,500.3651,169.2,496.3651,165.2" stroke="black" stroke-width="1.0"></polygon>
+                <text fill="black" font-family="sans-serif" font-size="13" x="496.3651" y="147.6">«generate credential»</text>
+                <polygon fill="black" points="239.52,190.8,229.52,194.8,239.52,198.8,235.52,194.8" stroke="black" stroke-width="1.0"></polygon>
+                <line x1="233.52" x2="483.3651" y1="194.8" y2="194.8" stroke="black" stroke-width="1.0"></line>
+                <text fill="black" font-family="sans-serif" font-size="13" x="245.52" y="190.2">credential</text>
+                <path d="M184.5771,216.8 L299.6342,216.8 L299.6342,224.4 L289.6342,234.4 L184.5771,234.4 L184.5771,216.8" fill="white" stroke="#000000" stroke-width="1.5"></path>
+                <rect fill="none" height="178.6001" width="577.2368" x="184.5771" y="216.8" stroke="#000000" stroke-width="1.5"></rect>
+                <text fill="black" font-family="sans-serif" font-size="13" font-weight="bold" x="199.5771" y="230.8">verification</text>
+                <polygon fill="black" points="244.52,252,234.52,256,244.52,260,240.52,256" stroke="black" stroke-width="1.0"></polygon>
+                <line x1="238.52" x2="638.9152" y1="256" y2="256" stroke="black" stroke-width="1.0"></line>
+                <text fill="black" font-family="sans-serif" font-size="13" x="250.52" y="251.4">request presentation</text>
+                <polygon fill="black" points="698.211,281.6,708.211,285.6,698.211,289.6,702.211,285.6" stroke="black" stroke-width="1.0"></polygon>
+                <line x1="233.52" x2="704.211" y1="285.6" y2="285.6" stroke="black" stroke-width="1.0"></line>
+                <text fill="black" font-family="sans-serif" font-size="13" x="240.52" y="281">«prompt to select credential(s)»</text>
+                <polygon fill="black" points="244.52,311.2001,234.52,315.2001,244.52,319.2001,240.52,315.2001" stroke="black" stroke-width="1.0"></polygon>
+                <line x1="238.52" x2="714.211" y1="315.2001" y2="315.2001" stroke="black" stroke-width="1.0"></line>
+                <text fill="black" font-family="sans-serif" font-size="13" x="250.52" y="310.6">«select claims from credential(s)»</text>
+                <line x1="233.52" x2="275.52" y1="344.8001" y2="344.8001" stroke="black" stroke-width="1.0"></line>
+                <line x1="275.52" x2="275.52" y1="344.8001" y2="357.8001" stroke="black" stroke-width="1.0"></line>
+                <line x1="234.52" x2="275.52" y1="357.8001" y2="357.8001" stroke="black" stroke-width="1.0"></line>
+                <polygon fill="black" points="244.52,353.8001,234.52,357.8001,244.52,361.8001,240.52,357.8001" stroke="black" stroke-width="1.0"></polygon>
+                <text fill="black" font-family="sans-serif" font-size="13" x="240.52" y="340.2001">«generate presentation proof selection»</text>
+                <polygon fill="black" points="627.9152,383.4001,637.9152,387.4001,627.9152,391.4001,631.9152,387.4001" stroke="black" stroke-width="1.0"></polygon>
+                <line x1="228.52" x2="633.9152" y1="387.4001" y2="387.4001" stroke="black" stroke-width="1.0"></line>
+                <text fill="black" font-family="sans-serif" font-size="13" x="235.52" y="382.8001">presentation proof</text>
+                <!--SRC=[TPAnReKm34Ltli9ZE_035MBlKAbIfUvfCCWLBw6Eyxw_CG6QyEXcMxudrtOczd412Y4QPx41W8_uzOrMe6rxUCE1Z7X-WQuZHv8I1Ciue4ln38m_4OFqlGgD5RfhmwxIuciY8qFNjWLianMaIfyrXLgjv52DJEYGQoFP0AD4TYVgW1VSebYQBShR5XfqGzDCwvBko3IIDKBUQVVdcc_s7eTR64EoSRHVlhZ7A-CzA_AK2_lR8Y0U0ivwZx-ndiBpQUE7icBgqYlcJfeDtGACwOKhQh65Q-xvPnm7AKTEYVVZPZxbrOaU6_-xYkx_5m00]-->
   </g>
-          </svg><a href="#section-6-2.1" class="pilcrow">¶</a>
+            </svg><a href="#section-6.1-2.1" class="pilcrow">¶</a>
 </div>
 </div>
-<p id="section-6-3">The mediator (acting on behalf of the subject) requests a credential from the issuer. The way this flow is initiated is implementation dependent and in some cases (notably in <span>[<a href="#OIDC4VCI" class="cite xref">OIDC4VCI</a>]</span>) the flow often starts with the subject visiting a web page at the issuer where the subject is first authenticated and then presented with means to launch a credential issuance request using their mediator. These details are left out from the diagram above.<a href="#section-6-3" class="pilcrow">¶</a></p>
-<p id="section-6-4">The credential is somehow generated by the issuer. This is implementation dependent. The claims in the credential typically comes from some source with which the issuer has a trust relationship. The term "authentic source" is sometimes used when there is a need to distinguish the source of the claims in a credential from the source of the credential which by definition is the issuer.<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5">The mediator receives a credential from the issuer. The credential is typically bound both to the mediator instance and to the issuer in such a way that presentation proofs generated from the credential can be used to verify said bindings.<a href="#section-6-5" class="pilcrow">¶</a></p>
-<p id="section-6-6">At some later point, the subject wants to use the credentials in their mediator to provide identity data to an application. The application has a verifier (a specific software component responsible for verifying presentation proofs) associated with it. The mediator - often after involving the user in some form of interaction to choose which credential(s) to use and what parts of the credential(s) to include - generates a presentation proof and sends it to the verifier. The precise way this flow is initiated is again implementation dependent and in some cases (notably <span>[<a href="#OIDC4VP" class="cite xref">OIDC4VP</a>]</span>) the flow starts with the subject visiting the application and hitting a "login" button which directs the users device to launch the mediator instance to complete the flow. These details are left out of the diagram above.<a href="#section-6-6" class="pilcrow">¶</a></p>
-<p id="section-6-7">Upon receipt of the presentation the verifier verifies the issuer and mediator binding (aka holder binding) of the proof and - if the implementation supports revocation - the current validity of the underlying credential(s). If successful the data in the proof is made available to the application.<a href="#section-6-7" class="pilcrow">¶</a></p>
+<p id="section-6.1-3">The mediator (acting on behalf of the subject) requests a credential from the issuer. The way this flow is initiated is implementation dependent and in some cases (notably in <span>[<a href="#OIDC4VCI" class="cite xref">OIDC4VCI</a>]</span>) the flow often starts with the subject visiting a web page at the issuer where the subject is first authenticated and then presented with means to launch a credential issuance request using their mediator. These details are left out from the diagram above.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.1-4">The credential is generated by the issuer presumably based on information the issuer has about the data subject but exactly how the credential is generated is implementation dependent and out of scope for this specification. The claims in the credential typically comes from some source with which the issuer has a trust relationship. The term "authentic source" is sometimes used when there is a need to distinguish the source of the claims in a credential from the source of the credential which by definition is the issuer.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+<p id="section-6.1-5">The mediator receives a credential from the issuer. The credential is bound both to the mediator and to the issuer in such a way that presentation proofs generated from the credential can be used to verify said bindings.<a href="#section-6.1-5" class="pilcrow">¶</a></p>
+<p id="section-6.1-6">At some later point, the subject wants to use the credentials in their mediator to provide identity data to an application. The application has a verifier (a specific software component responsible for verifying presentation proofs) associated with it. The mediator - often after involving the user in some form of interaction to choose which credential(s) to use and what parts of the credential(s) to include - generates a presentation proof and sends it to the verifier. The precise way this flow is initiated is again implementation dependent and in some cases (notably <span>[<a href="#OIDC4VP" class="cite xref">OIDC4VP</a>]</span>) the flow starts with the subject visiting the application and hitting a "login" button which directs the users device to launch the mediator to complete the flow. These details are left out of the diagram above.<a href="#section-6.1-6" class="pilcrow">¶</a></p>
+<p id="section-6.1-7">Upon receipt of the presentation the verifier verifies the issuer and mediator binding (aka holder binding) of the proof and - if the implementation supports revocation - the current validity of the underlying credential(s). If successful the data in the proof is made available to the application.<a href="#section-6.1-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="delegated-or-assisted-presentation-flow">
+<section id="section-6.2">
+        <h3 id="name-delegated-or-assisted-prese">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-delegated-or-assisted-prese" class="section-name selfRef">Delegated or Assisted Presentation Flow</a>
+        </h3>
+<p id="section-6.2-1">Delegated flows occur when a third party, such as an enterprise or legal representative, is authorized to present credentials on behalf of the data subject. The presentation mediator ensures that delegation is properly scoped and authorized, preventing misuse.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">Assisted flows involve granting limited rights to a third party to act on behalf of the data subject. This may take the form of a secondary credential that grants access to the mediator for the purpose of generating and transmitting presentation proofs on behalf of the data subject.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="normative-requirements">
@@ -1566,6 +1568,7 @@ Country: US
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-subject-control" class="section-name selfRef">Subject control</a>
         </h3>
 <p id="section-7.1-1">The mediator <span class="bcp14">SHOULD</span> provide the subject with the means to control which data from a credential is used in a presentation proof.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1-2">The mediator <span class="bcp14">MUST NOT</span> be able to generate a presentation proof without the participation and approval of the data subject.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="selective-disclosure">
@@ -1574,6 +1577,7 @@ Country: US
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-selective-disclosure" class="section-name selfRef">Selective Disclosure</a>
         </h3>
 <p id="section-7.2-1">A conformant implementation <span class="bcp14">SHOULD</span> identify a format for representing digital credentials that make it possible for the subject to select a subset of the data present in the credential for inclusion in a presentation proof.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+<p id="section-7.2-2">Note that there are situations where selective disclosure isn't applicable, for instance when the data subject is legally complelled to present a credential. Exactly when selective disclosure is available as an option and what aspects of the credential is meaningful to select is an implementation issue and out of scope.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="issuer-binding">
@@ -1581,15 +1585,16 @@ Country: US
         <h3 id="name-issuer-binding">
 <a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-issuer-binding" class="section-name selfRef">Issuer Binding</a>
         </h3>
-<p id="section-7.3-1">A verifier <span class="bcp14">MUST</span> be able to verifiy the identity of the issuer of the credential from the presentation proof.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+<p id="section-7.3-1">A verifier <span class="bcp14">MUST</span> be able to verifiy the identity of the issuer of the credential from a presentation proof.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="holder-binding">
+<div id="mediator-binding">
 <section id="section-7.4">
-        <h3 id="name-holder-binding">
-<a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-holder-binding" class="section-name selfRef">Holder Binding</a>
+        <h3 id="name-mediator-binding">
+<a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-mediator-binding" class="section-name selfRef">Mediator Binding</a>
         </h3>
 <p id="section-7.4-1">The verifier <span class="bcp14">MUST</span> be able to verify that the mediator sending the presentation proof is the same mediator that received the credential from which the presentation proof was derived.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+<p id="section-7.4-2">Note that this is often termed 'holder' binding because the mediator is sometimes called the holder.<a href="#section-7.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="non-linkability-and-data-minimization">
@@ -1616,10 +1621,10 @@ Country: US
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-profiles" class="section-name selfRef">Profiles</a>
       </h2>
 <p id="section-8-1">Several profiles of this reference architecture exist. We present two below.<a href="#section-8-1" class="pilcrow">¶</a></p>
-<div id="a-minimal-profile">
+<div id="openid-and-sd-jwt">
 <section id="section-8.1">
-        <h3 id="name-a-minimal-profile">
-<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-a-minimal-profile" class="section-name selfRef">A Minimal Profile</a>
+        <h3 id="name-openid-and-sd-jwt">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-openid-and-sd-jwt" class="section-name selfRef">OpenID and SD-JWT</a>
         </h3>
 <p id="section-8.1-1">A minimal profile of the direct presentation credential architecture is as follows:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-8.1-2">
@@ -1652,12 +1657,20 @@ Country: US
 <p id="section-8.1-6">This profile does not provide any solution for revocation and it leaves the question of how OpenID connect entities (issuers, verifiers and mediator) trust each other. There are also real scalability issues involved in how the digital signature keys are managed but as a minimal profile it illustrates the components necessary to make a direct presentation architecture work.<a href="#section-8.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="the-eu-digital-identity-wallet">
+<div id="anoncreds">
 <section id="section-8.2">
-        <h3 id="name-the-eu-digital-identity-wal">
-<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-the-eu-digital-identity-wal" class="section-name selfRef">The EU Digital Identity Wallet</a>
+        <h3 id="name-anoncreds">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-anoncreds" class="section-name selfRef">Anoncreds</a>
         </h3>
-<p id="section-8.2-1">The EU digital identity wallet (EUID wallet) as defined by the architecture reference framework <span>[<a href="#ARF" class="cite xref">ARF</a>]</span> is an evolving profile for a direct presentation architecture that includes several aspects of the minimal profile above. Note that the EUID wallet specification is in flux and subect to signifficant change.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-1">TODO: write about hyperledger &amp; anoncreds<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="the-eu-digital-identity-wallet">
+<section id="section-8.3">
+        <h3 id="name-the-eu-digital-identity-wal">
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-the-eu-digital-identity-wal" class="section-name selfRef">The EU Digital Identity Wallet</a>
+        </h3>
+<p id="section-8.3-1">The EU digital identity wallet (EUID wallet) as defined by the architecture reference framework <span>[<a href="#ARF" class="cite xref">ARF</a>]</span> is an evolving profile for a direct presentation architecture that includes several aspects of the minimal profile above. Note that the EUID wallet specification is in flux and subect to signifficant change.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1675,7 +1688,7 @@ Country: US
       <h2 id="name-iana-considerations">
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-10-1">None<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-10-1">None so far<a href="#section-10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
@@ -1744,12 +1757,28 @@ Country: US
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
+<p id="appendix-A-1">Several people have contributed to this text through discussion. The author especially wishes to acknowledge the following individuals who have helped shape the thinking around trust and identity in general and this topic in particular.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-1.1">
-          <p id="appendix-A-1.1.1">Peter Altman<a href="#appendix-A-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-2.1">
+          <p id="appendix-A-2.1.1">Pamela Dingle<a href="#appendix-A-2.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-1.2">
-          <p id="appendix-A-1.2.1">Giuseppe DeMarco<a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-2.2">
+          <p id="appendix-A-2.2.1">Heather Flanagan<a href="#appendix-A-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-2.3">
+          <p id="appendix-A-2.3.1">Peter Altman<a href="#appendix-A-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-2.4">
+          <p id="appendix-A-2.4.1">Giuseppe DeMarco<a href="#appendix-A-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-2.5">
+          <p id="appendix-A-2.5.1">Lucy Lynch<a href="#appendix-A-2.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-2.6">
+          <p id="appendix-A-2.6.1">R.L. 'Bob' Morgan<a href="#appendix-A-2.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-2.7">
+          <p id="appendix-A-2.7.1">Jeff Hodges<a href="#appendix-A-2.7.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
