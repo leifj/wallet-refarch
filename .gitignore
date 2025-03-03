@@ -6,6 +6,7 @@ Gemfile.lock
 /.gems/
 *.html
 /lib
+/.*.mk
 /node_modules/
 package-lock.json
 *.pdf
@@ -14,11 +15,9 @@ package-lock.json
 report.xml
 *.swp
 .tags
-/.targets.mk
 *.txt
 *.upload
 /.venv/
 /versioned/
 /.vscode/
 !requirements.txt
-*~
