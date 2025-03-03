@@ -174,9 +174,23 @@ Direct presentation flow should be seen as a generalization of the Self-Sovereig
 
 # Actors and Entities
 
-## Subject and Mediator
+## Subject and Presenter
 
-The subject (aka data subject) is typically a natural person but can be thought of as the entity associated with a set of data. The subject controls a presentation mediator (mediator for short). The mediator is used by the subject to communicate with issuers and verifiers and acts as a container for digital credentials and presentation proofs. The nature of the control the user has over the mediator varies but minimally the user must be able to initiate the receipt of credentials from an issuer and the transmission of digital credentials to a verifier.
+The data subject is the entity that the credential describes, such as an individual, an organization, or even an IoT device. However, the presenter—the actor delivering the credential to the verifier—may not always be the data subject. For example, an administrator might present credentials on behalf of an organization, or a software agent might act as a presenter in automated workflows.
+
+This distinction between the data subject and the presenter allows the architecture to support complex use cases, such as power-of-attorney scenarios or enterprise credentialing systems.
+
+## Presentation Mediator
+
+The presentation mediator (mediator for short) is the core active component of this architecture. It initiates and mediates credential presentations, ensuring compliance with data subject preferences and system policies. For example, it might enforce selective disclosure, revealing only the subject's date of birth to a verifier while withholding other personal details. The subject controls a presentation mediator.
+
+Unlike a credential store, the presentation mediator is responsible for orchestrating interactions with verifiers, performing cryptographic operations, and generating presentation proofs.
+
+The mediator is used by the subject to communicate with issuers and verifiers. The nature of the control the user has over the mediator varies but minimally the user must be able to initiate the receipt of credentials from an issuer and the generation and transmission of presentation proofs to a verifier.
+
+## Credential Store
+
+The credential store is a passive repository where credentials are securely stored. Its primary function is to provide the presentation mediator with access to the credentials it needs to generate presentation proofs. By separating storage from active mediation, the architecture enhances modularity and allows credential stores to be managed independently from presentation logic.
 
 ## Credentials and Presentation Proofs
 
@@ -188,7 +202,11 @@ An issuer is a set of protcol endpoints that allow a mediator to receive a crede
 
 A verfier is a set of protocol endpoints that allow a mediator to send a presentation to a verifier. A verifier is typically a component used to provide an application with data about the subject - for instance in the context of an authentication process.
 
-# Direct Presentation Flow
+# Presentation Flows
+
+Credential presentation flows describe how credentials move from the presenter to the verifier. This architecture focuses on direct presentation flows, but it also accommodates variations such as delegated and assisted presentations.
+
+## Direct Presentation Flow
 
 The basic direct presentation flows looks like this:
 
@@ -226,6 +244,12 @@ The mediator receives a credential from the issuer. The credential is typically 
 At some later point, the subject wants to use the credentials in their mediator to provide identity data to an application. The application has a verifier (a specific software component responsible for verifying presentation proofs) associated with it. The mediator - often after involving the user in some form of interaction to choose which credential(s) to use and what parts of the credential(s) to include - generates a presentation proof and sends it to the verifier. The precise way this flow is initiated is again implementation dependent and in some cases (notably {{OIDC4VP}}) the flow starts with the subject visiting the application and hitting a "login" button which directs the users device to launch the mediator to complete the flow. These details are left out of the diagram above.
 
 Upon receipt of the presentation the verifier verifies the issuer and mediator binding (aka holder binding) of the proof and - if the implementation supports revocation - the current validity of the underlying credential(s). If successful the data in the proof is made available to the application.
+
+## Delegated or Assisted Presentation Flow
+
+Delegated flows occur when a third party, such as an enterprise or legal representative, is authorized to present credentials on behalf of the data subject. The presentation mediator ensures that delegation is properly scoped and authorized, preventing misuse.
+
+Assisted flows involve granting limited rights to a third party to act on behalf of the data subject. This may take the form of a secondary credential that grants access to the mediator for the purpose of generating and transmitting presentation proofs on behalf of the data subject.
 
 # Normative Requirements
 
