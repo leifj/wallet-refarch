@@ -270,9 +270,11 @@ Note that there are situations where selective disclosure isn't applicable, for 
 
 A verifier MUST be able to verifiy the identity of the issuer of the credential from a presentation proof.
 
-## Holder Binding
+## Mediator Binding
 
 The verifier MUST be able to verify that the mediator sending the presentation proof is the same mediator that received the credential from which the presentation proof was derived.
+
+Note that this is often termed 'holder' binding because the mediator is sometimes called the holder.
 
 ## Non-linkability and data minimization
 
