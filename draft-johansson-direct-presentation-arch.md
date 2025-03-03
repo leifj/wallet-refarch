@@ -288,7 +288,7 @@ A conformant implementation SHOULD provide a way for an issuer to revoke an issu
 
 Several profiles of this reference architecture exist. We present two below.
 
-## A Minimal Profile
+## OpenID and SD-JWT
 
 A minimal profile of the direct presentation credential architecture is as follows:
 
