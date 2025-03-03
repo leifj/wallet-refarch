@@ -7,7 +7,7 @@ stream: IETF
 v: 3
 
 ipr: trust200902
-# area: Applications
+# area: Security
 keyword: direct presentation credentials
 
 stand_alone: yes
