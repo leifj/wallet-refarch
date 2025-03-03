@@ -304,6 +304,10 @@ This minimal profile fulfills several of the requirements in the previous sectio
 
   This profile does not provide any solution for revocation and it leaves the question of how OpenID connect entities (issuers, verifiers and mediator) trust each other. There are also real scalability issues involved in how the digital signature keys are managed but as a minimal profile it illustrates the components necessary to make a direct presentation architecture work.
 
+## Anoncreds
+
+TODO: write about hyperledger & anoncreds
+
 ## The EU Digital Identity Wallet
 
 The EU digital identity wallet (EUID wallet) as defined by the architecture reference framework {{ARF}} is an evolving profile for a direct presentation architecture that includes several aspects of the minimal profile above. Note that the EUID wallet specification is in flux and subect to signifficant change.
