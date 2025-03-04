@@ -1,0 +1,98 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2025-03-04T00:02:39.879012+00:00",
+  "repo": "leifj/wallet-refarch",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOKFiMhc5uj_O-",
+      "title": "use the term \"claims\" instead of \"data\" to represent the \"stuff\" inside a credential",
+      "url": "https://github.com/leifj/wallet-refarch/issues/1",
+      "state": "OPEN",
+      "author": "leifj",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-08-17T12:41:52Z",
+      "updatedAt": "2023-08-17T12:41:52Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 2,
+      "id": "PR_kwDOKFiMhc5qbbNz",
+      "title": "Subject only presents login credentials to the *IdP*, right?",
+      "url": "https://github.com/leifj/wallet-refarch/pull/2",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This document was mentioned in a recent IETF SPICE BoF meeting, which led me to read it. And I noticed this little issue. Hopefully that explains why I'm here ~7months after the last update to this repo's content. ",
+      "createdAt": "2024-03-21T23:18:03Z",
+      "updatedAt": "2024-03-21T23:30:16Z",
+      "baseRepository": "leifj/wallet-refarch",
+      "baseRefName": "main",
+      "baseRefOid": "729a4a4199f4402a3170d010b23f1648309f2b73",
+      "headRepository": "bc-pi/wallet-refarch",
+      "headRefName": "patch-1",
+      "headRefOid": "c341c114ce8b2dfbb11573adc9f7e155fd48511d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
