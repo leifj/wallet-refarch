@@ -206,7 +206,7 @@ normative:
         ins: T. Looker
         name: Tobias Looker
     target: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
----
+...
 
 --- abstract
 
