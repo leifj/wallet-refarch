@@ -443,6 +443,7 @@ and assisted presentations.
                     |Subject|                        |Mediator|                                              |Issuer|                            |Verifier|           |Presenter|
                     +-------+                        +--------+                                              +------+                            +--------+           +---------+
 ~~~
+{: #fig-basic-flow title="Basic Verifiable Cigital Credential Flow"}
 
 The mediator (acting on behalf of the subject) requests a credential from the
 issuer. The way this flow is initiated is implementation dependent and in some
