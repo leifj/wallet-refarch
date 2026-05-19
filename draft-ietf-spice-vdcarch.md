@@ -444,32 +444,6 @@ and assisted presentations.
                     +-------+                        +--------+                                              +------+                            +--------+           +---------+
 ~~~
 
-{::comment}
-// plantuml source
-group issuance
-   Subject --> Mediator: <<initiate credential request>>
-   activate Mediator
-   Issuer <-- Mediator: request credential
-   activate Issuer
-   Issuer --> Issuer: <<generate credential>>
-   return credential
-   deactivate Issuer
-   deactivate Mediator
-   deactivate Subject
-end
-group verification
-   Verifier --> Mediator: request presentation
-   activate Mediator
-   Mediator --> Presenter: <<prompt to select credential(s)>>
-   activate Presenter
-   Mediator <-- Presenter: <<select claims from credential(s)>>
-   deactivate Presenter
-   Mediator --> Mediator: <<generate presentation proof selection>>
-   return presentation proof
-   deactivate Mediator
-end
-{:/comment}
-
 The mediator (acting on behalf of the subject) requests a credential from the
 issuer. The way this flow is initiated is implementation dependent and in some
 cases (notably in {{OIDC4VCI}}) the flow often starts with the subject visiting
