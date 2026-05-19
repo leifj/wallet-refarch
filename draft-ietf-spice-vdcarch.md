@@ -1,5 +1,5 @@
 ---
-title: A reference architecture for direct presentation credential flows
+title: A Reference Architecture for Verifiable Digital Credentials in the Issuer, Holder, Verifier Model
 abbrev: Verifiable Digital Credentials
 docname: draft-ietf-spice-vdcarch-latest
 category: info
