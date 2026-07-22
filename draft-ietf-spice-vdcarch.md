@@ -19,8 +19,8 @@ author:
   -
      ins: L. Johansson
      name: Leif Johansson
-     organization: Sunet
-     email: leifj@sunet.se
+     organization: SIROS Foundation
+     email: leifj@siros.org
      country: Sweden
   -
      ins: B. Zundel
