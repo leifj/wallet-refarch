@@ -3,12 +3,12 @@
 
 
 Network Working Group                                       L. Johansson
-Internet-Draft                                                     Sunet
+Internet-Draft                                          SIROS Foundation
 Intended status: Informational                                 B. Zundel
-Expires: 20 November 2026                                         Yubico
+Expires: 23 January 2027                                          Yubico
                                                              T. Cappalli
                                                                     Okta
-                                                             19 May 2026
+                                                            22 July 2026
 
 
    A reference architecture for direct presentation credential flows
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 November 2026.
+   This Internet-Draft will expire on 23 January 2027.
 
 Copyright Notice
 
@@ -684,9 +684,9 @@ Acknowledgments
 Authors' Addresses
 
    Leif Johansson
-   Sunet
+   SIROS Foundation
    Sweden
-   Email: leifj@sunet.se
+   Email: leifj@siros.org
 
 
    Brent W. Zundel
