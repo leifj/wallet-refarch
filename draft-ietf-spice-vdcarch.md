@@ -1,6 +1,6 @@
 ---
 title: A reference architecture for direct presentation credential flows
-abbrev: Verifiable Digital Credentials
+abbrev: Architecture for Digital Credentials
 docname: draft-ietf-spice-vdcarch-latest
 category: info
 stream: IETF
