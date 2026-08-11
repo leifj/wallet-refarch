@@ -1,5 +1,5 @@
 ---
-title: A reference architecture for direct presentation credential flows
+title: A Reference Architecture for Verifiable Digital Credentials in the Issuer, Holder, Verifier Model
 abbrev: Verifiable Digital Credentials
 docname: draft-ietf-spice-vdcarch-latest
 category: info
@@ -206,7 +206,7 @@ normative:
         ins: T. Looker
         name: Tobias Looker
     target: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
----
+...
 
 --- abstract
 
