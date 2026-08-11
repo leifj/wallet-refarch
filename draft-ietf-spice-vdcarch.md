@@ -172,7 +172,6 @@ normative:
         ins: M. B. Jones
         name: Michael B. Jones
     target: https://www.w3.org/TR/vc-jose-cose/
-  RFC2119:
   SDJWT: I-D.ietf-oauth-selective-disclosure-jwt
   OIDC4VP:
     title: OpenID for Verifiable Presentations
@@ -206,7 +205,7 @@ normative:
         ins: T. Looker
         name: Tobias Looker
     target: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
----
+
 
 --- abstract
 
@@ -399,79 +398,52 @@ direct presentation flows, but it also accommodates variations such as delegated
 and assisted presentations.
 
 ## Direct Presentation Flow
+~~~ aasvg
 
-The basic direct presentation flows looks like this:
-
-~~~ ascii-art
-                    ┌───────┐                       ┌────────┐                                              ┌──────┐                            ┌────────┐           ┌─────────┐
-                    │Subject│                       │Mediator│                                              │Issuer│                            │Verifier│           │Presenter│
-                    └───┬───┘                       └────┬───┘                                              └───┬──┘                            └────┬───┘           └────┬────┘
-                        │                                │                                                      │                                    │                    │
-          ╔═══════════╤═╪════════════════════════════════╪══════════════════════════════════════════════════════╪════════════════════════════════════╪══╗                 │
-          ║ ISSUANCE  │ │                                │                                                      │                                    │  ║                 │
-          ╟───────────┘ <<initiate credential request>> ┌┴┐                                                     │                                    │  ║                 │
-          ║             │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ > │ │                                                     │                                    │  ║                 │
-          ║             │                               │ │                                                     │                                    │  ║                 │
-          ║             │                               │ │                 request credential                 ┌┴┐                                   │  ║                 │
-          ║             │                               │ │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>│ │                                   │  ║                 │
-          ║             │                               │ │                                                    │ │                                   │  ║                 │
-          ║             │                               │ │                                                    │ │ ─ ─ ┐                             │  ║                 │
-          ║             │                               │ │                                                    │ │     | <<generate credential>>     │  ║                 │
-          ║             │                               │ │                                                    │ │ < ─ ┘                             │  ║                 │
-          ║             │                               └┬┘                                                    └┬┘                                   │  ║                 │
-          ║             │                                │                     credential                       │                                    │  ║                 │
-          ║             │                                │<─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│                                    │  ║                 │
-          ╚═════════════╪════════════════════════════════╪══════════════════════════════════════════════════════╪════════════════════════════════════╪══╝                 │
-                        │                                │                                                      │                                    │                    │
-                        │                                │                                                      │                                    │                    │
-                        │                 ╔══════════════╪╤═════════════════════════════════════════════════════╪════════════════════════════════════╪════════════════════╪══════════════╗
-                        │                 ║ VERIFICATION  │                                                     │                                    │                    │              ║
-                        │                 ╟───────────────┘                                   request presentation                                   │                    │              ║
-                        │                 ║             │ │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ │                    │              ║
-                        │                 ║             │ │                                                     │                                    │                    │              ║
-                        │                 ║             │ │                                      <<prompt to select credential(s)>>                  │                   ┌┴┐             ║
-                        │                 ║             │ │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>│ │             ║
-                        │                 ║             │ │                                                     │                                    │                   └┬┘             ║
-                        │                 ║             │ │                                     <<select claims from credential(s)>>                 │                    │              ║
-                        │                 ║             │ │ <─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│              ║
-                        │                 ║             │ │                                                     │                                    │                    │              ║
-                        │                 ║             │ │ ─ ─ ┐                                               │                                    │                    │              ║
-                        │                 ║             │ │     | <<generate presentation proof selection>>     │                                    │                    │              ║
-                        │                 ║             │ │ < ─ ┘                                               │                                    │                    │              ║
-                        │                 ║             └┬┘                                                     │                                    │                    │              ║
-                        │                 ║              │                                    presentation proof│                                    │                    │              ║
-                        │                 ║              │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─>│                    │              ║
-                        │                 ╚══════════════╪══════════════════════════════════════════════════════╪════════════════════════════════════╪════════════════════╪══════════════╝
-                    ┌───┴───┐                       ┌────┴───┐                                              ┌───┴──┐                            ┌────┴───┐           ┌────┴────┐
-                    │Subject│                       │Mediator│                                              │Issuer│                            │Verifier│           │Presenter│
-                    └───────┘                       └────────┘                                              └──────┘                            └────────┘           └─────────┘
+                    +-------+                        +--------+                                              +------+                            +--------+           +---------+
+                    |Subject|                        |Mediator|                                              |Issuer|                            |Verifier|           |Presenter|
+                    +---+---+                        +----+---+                                              +---+--+                            +----+---+           +----+----+
+                        |                                 |                                                      |                                    |                    |
+          +-----------+-+---------------------------------+------------------------------------------------------+------------------------------------+--+                 |
+          | ISSUANCE  | |                                 |                                                      |                                    |  |                 |
+          +-----------+ |<<initiate credential request>>  |                                                      |                                    |  |                 |
+          |             +-------------------------------->|                                                      |                                    |  |                 |
+          |             |                                 |                                                      |                                    |  |                 |
+          |             |                                 |                  request credential                  |                                    |  |                 |
+          |             |                                 +----------------------------------------------------->|                                    |  |                 |
+          |             |                                 |                                                      |                                    |  |                 |
+          |             |                                 |                                                      +------+                             |  |                 |
+          |             |                                 |                                                      |      | <<generate credential>>     |  |                 |
+          |             |                                 |                                                      |<-----+                             |  |                 |
+          |             |                                 |                                                      |                                    |  |                 |
+          |             |                                 |                     credential                       |                                    |  |                 |
+          |             |                                 |<-----------------------------------------------------+                                    |  |                 |
+          +-------------+---------------------------------+------------------------------------------------------+------------------------------------+--+                 |
+                        |                                 |                                                      |                                    |                    |
+                        |                                 |                                                      |                                    |                    |
+                        |               +---------------+-+------------------------------------------------------+------------------------------------+--------------------+--------------+
+                        |               | VERIFICATION  | |                                                      |                                    |                    |              |
+                        |               +---------------+ |                                                      |            request presentation    |                    |              |
+                        |               |                 |<------------------------------------------------------------------------------------------+                    |              |
+                        |               |                 |                                                      |                                    |                    |              |
+                        |               |                 |             <<prompt to select credential(s)>>       |                                    |                    |              |
+                        |               |                 +--------------------------------------------------------------------------------------------------------------->|              |
+                        |               |                 |                                                      |                                    |                    |              |
+                        |               |                 |            <<select claims from credential(s)>>      |                                    |                    |              |
+                        |               |                 |<---------------------------------------------------------------------------------------------------------------+              |
+                        |               |                 |                                                      |                                    |                    |              |
+                        |               |                 +-----+                                                |                                    |                    |              |
+                        |               |                 |     |<<generate presentation proof selection>>       |                                    |                    |              |
+                        |               |                 |<----+                                                |                                    |                    |              |
+                        |               |                 |                                                      |                                    |                    |              |
+                        |               |                 |                                  presentation proof  |                                    |                    |              |
+                        |               |                 +------------------------------------------------------------------------------------------>|                    |              |
+                        |               +-----------------+------------------------------------------------------+------------------------------------+--------------------+--------------+
+                    +---+---+                        +----+---+                                              +---+--+                            +----+---+           +----+----+
+                    |Subject|                        |Mediator|                                              |Issuer|                            |Verifier|           |Presenter|
+                    +-------+                        +--------+                                              +------+                            +--------+           +---------+
 ~~~
-
-{::comment}
-// plantuml source
-group issuance
-   Subject --> Mediator: <<initiate credential request>>
-   activate Mediator
-   Issuer <-- Mediator: request credential
-   activate Issuer
-   Issuer --> Issuer: <<generate credential>>
-   return credential
-   deactivate Issuer
-   deactivate Mediator
-   deactivate Subject
-end
-group verification
-   Verifier --> Mediator: request presentation
-   activate Mediator
-   Mediator --> Presenter: <<prompt to select credential(s)>>
-   activate Presenter
-   Mediator <-- Presenter: <<select claims from credential(s)>>
-   deactivate Presenter
-   Mediator --> Mediator: <<generate presentation proof selection>>
-   return presentation proof
-   deactivate Mediator
-end
-{:/comment}
+{: #fig-basic-flow title="Basic Verifiable Cigital Credential Flow"}
 
 The mediator (acting on behalf of the subject) requests a credential from the
 issuer. The way this flow is initiated is implementation dependent and in some
